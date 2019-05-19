@@ -187,7 +187,7 @@ check if we are being asked to create a new entry, i.e. whether
 <code>createSize</code> is non-zero.  If we were just trying to look something up
 in an empty table, we would return <code>NULL</code> at this point.</p>
 <div class="highlight"><pre><span></span>    <span class="n">table</span><span class="o">-&gt;</span><span class="n">power</span> <span class="o">=</span> <span class="n">INIT_POWER</span><span class="p">;</span>
-    <span class="cm">/* table-&amp;gt;size is a power of 2 */</span>
+    <span class="cm">/* table-&gt;size is a power of 2 */</span>
     <span class="n">table</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="kt">size_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;</span><span class="o">&lt;</span> <span class="n">INIT_POWER</span><span class="p">;</span>
     <span class="n">tsize</span> <span class="o">=</span> <span class="n">table</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">*</span> <span class="nf">sizeof</span><span class="p">(</span><span class="n">NAMED</span> <span class="o">*</span><span class="p">);</span>
     <span class="n">table</span><span class="o">-&gt;</span><span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">NAMED</span> <span class="o">**</span><span class="p">)</span><span class="n">table</span><span class="o">-&gt;</span><span class="n">mem</span><span class="o">-&gt;</span><span class="n">malloc_fcn</span><span class="p">(</span><span class="n">tsize</span><span class="p">);</span>
@@ -211,7 +211,7 @@ small parses without wasting too much memory.</p>
 structures using the memory allocation functions held in the table,
 tidying up and returning <code>NULL</code> if we failed.  This new memory is set
 to all zero, giving us a table of <code>NULL</code> pointers.</p>
-<div class="highlight"><pre><span></span>    <span class="n">i</span> <span class="o">=</span> <span class="n">hash</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span><span class="n">table</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<div class="highlight"><pre><span></span>    <span class="n">i</span> <span class="o">=</span> <span class="n">hash</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">((</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span><span class="n">table</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
   <span class="p">}</span>
 </pre></div>
 
@@ -277,7 +277,7 @@ same table entry as "foo" did.</p>
     <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">h</span> <span class="o">=</span> <span class="n">hash</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
     <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span><span class="n">table</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
     <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="n">h</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">mask</span><span class="p">;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">h</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">table</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span><span class="n">keyeq</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">table</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">table</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
@@ -305,7 +305,7 @@ empty slot or the key we are looking for.  For reasons we will see
 later, this will always terminate.</p>
 <p>The <code>PROBE_STEP</code> macro is defined as follows:</p>
 <div class="highlight"><pre><span></span><span class="cp">#define SECOND_HASH(hash, mask, power) \</span>
-<span class="cp">  ((((hash) &amp;amp; ~(mask)) &amp;gt;&amp;gt; ((power) - 1)) &amp;amp; ((mask) &amp;gt;&amp;gt; 2))</span>
+<span class="cp">  ((((hash) &amp; ~(mask)) &gt;&gt; ((power) - 1)) &amp; ((mask) &gt;&gt; 2))</span>
 <span class="cp">#define PROBE_STEP(hash, mask, power) \</span>
 <span class="cp">  ((unsigned char)((SECOND_HASH(hash, mask, power)) | 1))</span>
 </pre></div>
@@ -356,7 +356,7 @@ keep the number of expansions down.</p>
 <div class="highlight"><pre><span></span>      <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">table</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">table</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
           <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">newHash</span> <span class="o">=</span> <span class="n">hash</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">table</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">);</span>
-          <span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="n">newHash</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">newMask</span><span class="p">;</span>
+          <span class="kt">size_t</span> <span class="n">j</span> <span class="o">=</span> <span class="n">newHash</span> <span class="o">&amp;</span> <span class="n">newMask</span><span class="p">;</span>
           <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
           <span class="k">while</span> <span class="p">(</span><span class="n">newV</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">step</span><span class="p">)</span>
@@ -381,7 +381,7 @@ time.</p>
 relevant fields of the main <code>HASH_TABLE</code> structure.  At this point we
 have a consistent hash table again, but we haven't yet inserted our
 new entry.</p>
-<div class="highlight"><pre><span></span>      <span class="n">i</span> <span class="o">=</span> <span class="n">h</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">newMask</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>      <span class="n">i</span> <span class="o">=</span> <span class="n">h</span> <span class="o">&amp;</span> <span class="n">newMask</span><span class="p">;</span>
       <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
       <span class="k">while</span> <span class="p">(</span><span class="n">table</span><span class="o">-&gt;</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">step</span><span class="p">)</span>
@@ -446,9 +446,9 @@ pointer" pointing to the next possibility.  Once you run off the end
 of the table, return <code>NULL</code>.  Simples.<sup><a href="#simples">4</a></sup></p>
 <p>The code to run through a hash table is then just:</p>
 <div class="highlight"><pre><span></span><span class="n">HASH_TABLE_ITER</span> <span class="n">foo_iter</span><span class="p">;</span>
-<span class="n">hashTableIterInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">foo_iter</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">foo_table</span><span class="p">);</span>
+<span class="n">hashTableIterInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">foo_iter</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">foo_table</span><span class="p">);</span>
 <span class="k">for</span> <span class="p">(;;)</span> <span class="p">{</span>
-  <span class="n">FOO_ENTRY</span> <span class="o">*</span><span class="n">foo</span> <span class="o">=</span> <span class="p">(</span><span class="n">FOO_ENTRY</span> <span class="o">*</span><span class="p">)</span><span class="n">hashTableIterNext</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">foo_iter</span><span class="p">);</span>
+  <span class="n">FOO_ENTRY</span> <span class="o">*</span><span class="n">foo</span> <span class="o">=</span> <span class="p">(</span><span class="n">FOO_ENTRY</span> <span class="o">*</span><span class="p">)</span><span class="n">hashTableIterNext</span><span class="p">(</span><span class="o">&amp;</span><span class="n">foo_iter</span><span class="p">);</span>
   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">foo</span><span class="p">)</span>
     <span class="k">break</span><span class="p">;</span>
   <span class="n">do_something_with</span><span class="p">(</span><span class="n">foo</span><span class="p">);</span>
@@ -490,11 +490,11 @@ out here.  Assume that <code>power</code> is 6 (and <code>mask</code> is therefo
 <code>0b111111</code>), and suppose that our hash is <code>0b1111111111111111</code> to make
 the masking stand out (and because I can't be bothered to type more
 than 16 bits).  Therefore:</p>
-<div class="highlight"><pre><span></span>hash &amp;amp; ~mask                                = 0b1111111111000000
+<div class="highlight"><pre><span></span>hash &amp; ~mask                                = 0b1111111111000000
 
-(hash &amp;amp; ~mask) &amp;gt;&amp;gt; (power-1)                 = 0b0000011111111110
+(hash &amp; ~mask) &gt;&gt; (power-1)                 = 0b0000011111111110
 
-((hash &amp;amp; ~mask) &amp;gt;&amp;gt; (power-1)) &amp;amp; (mask &amp;gt;&amp;gt; 2) = 0b0000000000001110
+((hash &amp; ~mask) &gt;&gt; (power-1)) &amp; (mask &gt;&gt; 2) = 0b0000000000001110
 </pre></div>
 
 
