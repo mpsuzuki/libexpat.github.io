@@ -121,9 +121,9 @@ Expat) is German, and has this distressing habit of asking me what I
 actually mean.  Expect footnotes.</p>
 <h2>The Setup</h2>
 <p>We will work with the following few lines of XML:</p>
-<div class="highlight"><pre><span></span><span class="ni">&amp;lt;</span>doc<span class="ni">&amp;gt;</span>
-  <span class="ni">&amp;lt;</span>element<span class="ni">&amp;gt;</span>One<span class="ni">&amp;lt;</span>/element<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>/doc<span class="ni">&amp;gt;</span>
+<div class="highlight"><pre><span></span><span class="ni">&lt;</span>doc<span class="ni">&gt;</span>
+  <span class="ni">&lt;</span>element<span class="ni">&gt;</span>One<span class="ni">&lt;</span>/element<span class="ni">&gt;</span>
+<span class="ni">&lt;</span>/doc<span class="ni">&gt;</span>
 </pre></div>
 
 
@@ -334,7 +334,7 @@ untangle, but after some digging through <code>xmltok.c</code> you can figure ou
 that what you actually have is:</p>
 <div class="highlight"><pre><span></span><span class="cp">#define BYTE_TYPE(enc, p) SB_BYTE_TYPE(enc, p)</span>
 <span class="cp">#define SB_BYTE_TYPE(enc, p) \</span>
-<span class="cp">  (((struct normal_encoding *)(enc))-&amp;gt;type[(unsigned char)*(p)])</span>
+<span class="cp">  (((struct normal_encoding *)(enc))-&gt;type[(unsigned char)*(p)])</span>
 </pre></div>
 
 
@@ -359,7 +359,7 @@ there isn't at least one character left in the input.  Fortunately for
 us there is, so we don't have to deal with that unexpected hidden
 <code>return</code> statement, but bear it in mind for the future: some of the
 "convenience" macros in this file can and will exit your function!</p>
-<div class="highlight"><pre><span></span>&amp;lt;doc&amp;gt;
+<div class="highlight"><pre><span></span>&lt;doc&gt;
  ^
  +-- ptr
 </pre></div>
@@ -387,7 +387,7 @@ instructions (both starting with "&lt;?"), a document type declaration or
 comments (both starting with "&lt;!").  Since our example XML has no
 prologue at all, we can be happy that the parser got this right!</p>
 <h2>Processing the Token</h2>
-<div class="highlight"><pre><span></span>&amp;lt;doc&amp;gt;
+<div class="highlight"><pre><span></span>&lt;doc&gt;
 ^
 +-- s, next
 </pre></div>
@@ -525,7 +525,7 @@ sub-function, <code>normal_scanLt()</code>.</p>
 
 <p>The first thing <code>normal_scanLt()</code> does is to ensure that there is a
 character there for it to check, using <code>REQUIRE_CHAR</code>.</p>
-<div class="highlight"><pre><span></span>&amp;lt;doc&amp;gt;
+<div class="highlight"><pre><span></span>&lt;doc&gt;
  ^
  +-- ptr
 </pre></div>
@@ -636,7 +636,7 @@ character would always be invalid.</p>
 <p>So we were parsing the first character of our XML element, "d", which
 has a byte type of <code>BT_HEX</code>.  The <code>CHECK_NMSTRT_CASES</code> macro accepts
 that byte type as described above, and moves the parse pointer on:</p>
-<div class="highlight"><pre><span></span>&amp;lt;doc&amp;gt;
+<div class="highlight"><pre><span></span>&lt;doc&gt;
   ^
   +-- ptr
 </pre></div>
@@ -658,14 +658,14 @@ least one more character to examine.  We do, so we examine the
 the <code>BT_HEX</code> before it's swept up by <code>CHECK_NAME_CASES</code>, a macro very
 much like <code>CHECK_NMSTRT_CASES</code> except allowing a few more byte types
 through.  It accepts the character and moves the parse pointer on.</p>
-<div class="highlight"><pre><span></span>&amp;lt;doc&amp;gt;
+<div class="highlight"><pre><span></span>&lt;doc&gt;
    ^
    +-- ptr
 </pre></div>
 
 
 <p>The same thing happens for the "c", except that it's a <code>BT_HEX</code> again.</p>
-<div class="highlight"><pre><span></span>&amp;lt;doc&amp;gt;
+<div class="highlight"><pre><span></span>&lt;doc&gt;
     ^
     +-- ptr
 </pre></div>
@@ -686,7 +686,7 @@ the "&gt;" (the newline at the end of the line), and returns
 <code>XML_TOK_START_TAG_NO_ATTS</code>.  A start tag (element) with no attributes
 is exactly what this is.</p>
 <h2>We Have An Element, Now What?</h2>
-<div class="highlight"><pre><span></span>&amp;lt;doc&amp;gt;
+<div class="highlight"><pre><span></span>&lt;doc&gt;
 ^    ^
 |    +-- next
 +-- ptr
@@ -898,10 +898,10 @@ released (don't ask, it <em>is</em> that complicated), and we finally drop
 out of the big switch statement.  We run through the parsing state
 dance again, doing nothing since we are still <code>XML_PARSING</code>, and then
 go back to the top of the loop and call <code>normal_contentTok()</code> again.</p>
-<div class="highlight"><pre><span></span>&amp;lt;doc&amp;gt;
+<div class="highlight"><pre><span></span>&lt;doc&gt;
      ^
      +-- ptr
-  &amp;lt;element&amp;gt;One&amp;lt;/element&amp;gt;
+  &lt;element&gt;One&lt;/element&gt;
 </pre></div>
 
 
@@ -931,7 +931,7 @@ statement to pass a line feed character in the appropriate encoding to
 any character data handler the user may have registered.  Another trip
 around the parsing state dance and we come back to calling
 <code>normal_contentTok()</code> again.</p>
-<div class="highlight"><pre><span></span>  &amp;lt;element&amp;gt;One&amp;lt;/element&amp;gt;
+<div class="highlight"><pre><span></span>  &lt;element&gt;One&lt;/element&gt;
 ^
 +-- ptr
 </pre></div>
@@ -982,7 +982,7 @@ character data may be split up to avoid overflowing the internal
 buffer, so it becomes the handler's job to hold whatever state it
 needs between invocations.</p>
 <p>Then we check the parsing state and loop around again.</p>
-<div class="highlight"><pre><span></span>  &amp;lt;element&amp;gt;One&amp;lt;/element&amp;gt;
+<div class="highlight"><pre><span></span>  &lt;element&gt;One&lt;/element&gt;
   ^
   +-- ptr
 </pre></div>
@@ -991,7 +991,7 @@ needs between invocations.</p>
 <p>We've already seen how the parser accepts a simple start element tag,
 so we don't need to go through that again.  A few more turns around
 the loop and we have:</p>
-<div class="highlight"><pre><span></span>  &amp;lt;element&amp;gt;One&amp;lt;/element&amp;gt;
+<div class="highlight"><pre><span></span>  &lt;element&gt;One&lt;/element&gt;
            ^
            +-- ptr
 </pre></div>
@@ -1009,7 +1009,7 @@ joined to the <code>"  "</code> of the second, but not to the <code>"One"</code>
 third.  It needs help from start and end element handlers to tell what
 data should be joined together and what shouldn't.</p>
 <h2>End Tags</h2>
-<div class="highlight"><pre><span></span>  &amp;lt;element&amp;gt;One&amp;lt;/element&amp;gt;
+<div class="highlight"><pre><span></span>  &lt;element&gt;One&lt;/element&gt;
               ^
               +-- ptr
 </pre></div>
@@ -1046,7 +1046,7 @@ causing us to call <code>normal_scanLt()</code>.</p>
 
 
 <p>The start-of-parse pointer <code>ptr</code> has been moved on:</p>
-<div class="highlight"><pre><span></span>  &amp;lt;element&amp;gt;One&amp;lt;/element&amp;gt;
+<div class="highlight"><pre><span></span>  &lt;element&gt;One&lt;/element&gt;
                 ^
                 +-- ptr
 </pre></div>
@@ -1069,20 +1069,20 @@ to <code>doContent()</code>.</p>
 check that it hasn't closed more tags than it opened.  This could
 happen, for example if an overly-optimistic general entity expanded to
 an end tag.  The XML document</p>
-<div class="highlight"><pre><span></span><span class="ni">&amp;lt;</span>?xml version=&quot;1.0&quot;?<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>!DOCTYPE foodoc [
-  <span class="ni">&amp;lt;</span>!ENTITY foo &quot;<span class="ni">&amp;lt;</span>b<span class="ni">&amp;gt;</span>text<span class="ni">&amp;lt;</span>/b<span class="ni">&amp;gt;&amp;lt;</span>/a<span class="ni">&amp;gt;</span>&quot;<span class="ni">&amp;gt;</span>
-]<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>a<span class="ni">&amp;gt;&amp;amp;</span>foo;
+<div class="highlight"><pre><span></span><span class="ni">&lt;</span>?xml version=&quot;1.0&quot;?<span class="ni">&gt;</span>
+<span class="ni">&lt;</span>!DOCTYPE foodoc [
+  <span class="ni">&lt;</span>!ENTITY foo &quot;<span class="ni">&lt;</span>b<span class="ni">&gt;</span>text<span class="ni">&lt;</span>/b<span class="ni">&gt;&lt;</span>/a<span class="ni">&gt;</span>&quot;<span class="ni">&gt;</span>
+]<span class="ni">&gt;</span>
+<span class="ni">&lt;</span>a<span class="ni">&gt;&amp;amp;</span>foo;
 </pre></div>
 
 
 <p>trips exactly this test, while</p>
-<div class="highlight"><pre><span></span><span class="ni">&amp;lt;</span>?xml version=&quot;1.0&quot;?<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>!DOCTYPE foodoc [
-  <span class="ni">&amp;lt;</span>!ENTITY foo &quot;<span class="ni">&amp;lt;</span>b<span class="ni">&amp;gt;</span>text<span class="ni">&amp;lt;</span>/b<span class="ni">&amp;gt;</span>&quot;<span class="ni">&amp;gt;</span>
-]<span class="ni">&amp;gt;</span>
-<span class="ni">&amp;lt;</span>a<span class="ni">&amp;gt;&amp;amp;</span>foo;<span class="ni">&amp;lt;</span>/a<span class="ni">&amp;gt;</span>
+<div class="highlight"><pre><span></span><span class="ni">&lt;</span>?xml version=&quot;1.0&quot;?<span class="ni">&gt;</span>
+<span class="ni">&lt;</span>!DOCTYPE foodoc [
+  <span class="ni">&lt;</span>!ENTITY foo &quot;<span class="ni">&lt;</span>b<span class="ni">&gt;</span>text<span class="ni">&lt;</span>/b<span class="ni">&gt;</span>&quot;<span class="ni">&gt;</span>
+]<span class="ni">&gt;</span>
+<span class="ni">&lt;</span>a<span class="ni">&gt;&amp;amp;</span>foo;<span class="ni">&lt;</span>/a<span class="ni">&gt;</span>
 </pre></div>
 
 
@@ -1115,16 +1115,16 @@ something about it.  Remember that for later.</p>
 handler the user may have registered and tidies up.  That is
 straightforward in our case; we have no namespace bindings confusing
 the issue, and we aren't the root tag.</p>
-<div class="highlight"><pre><span></span>  &amp;lt;element&amp;gt;One&amp;lt;/element&amp;gt;
+<div class="highlight"><pre><span></span>  &lt;element&gt;One&lt;/element&gt;
                         ^
                         +-- ptr
-&amp;lt;/doc&amp;gt;
+&lt;/doc&gt;
 </pre></div>
 
 
 <p>Next we have the newline, which again is just passed to the character
 data handler.</p>
-<div class="highlight"><pre><span></span>&amp;lt;/doc&amp;gt;
+<div class="highlight"><pre><span></span>&lt;/doc&gt;
 ^
 +-- ptr
 </pre></div>

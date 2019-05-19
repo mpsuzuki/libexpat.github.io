@@ -331,7 +331,7 @@ hard to comprehend because of all the subordinate macros.
 Substituting the <code>INVALID_LEAD_CASE</code> macros makes it somewhat easier
 to read:</p>
 <div class="highlight"><pre><span></span><span class="k">case</span> <span class="nl">BT_LEAD2</span><span class="p">:</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">ptr</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">ptr</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">XML_TOK_PARTIAL_CHAR</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">IS_INVALID_CHAR</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="p">{</span>
     <span class="o">*</span><span class="n">nextTokPtr</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
@@ -341,7 +341,7 @@ to read:</p>
   <span class="k">break</span><span class="p">;</span>
 
 <span class="k">case</span> <span class="nl">BT_LEAD3</span><span class="p">:</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">ptr</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="mi">3</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">ptr</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">XML_TOK_PARTIAL_CHAR</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">IS_INVALID_CHAR</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="p">{</span>
     <span class="o">*</span><span class="n">nextTokPtr</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
@@ -351,7 +351,7 @@ to read:</p>
   <span class="k">break</span><span class="p">;</span>
 
 <span class="k">case</span> <span class="nl">BT_LEAD4</span><span class="p">:</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">ptr</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">ptr</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">XML_TOK_PARTIAL_CHAR</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">IS_INVALID_CHAR</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="p">{</span>
     <span class="o">*</span><span class="n">nextTokPtr</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
@@ -460,7 +460,7 @@ at the start of the parse, <code>XmlTokenRole()</code> translates to the
   <span class="k">switch</span> <span class="p">(</span><span class="n">tok</span><span class="p">)</span> <span class="p">{</span>
   <span class="cm">/* ... */</span>
   <span class="k">case</span> <span class="nl">XML_TOK_XML_DECL</span><span class="p">:</span>
-    <span class="n">state</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">handler</span> <span class="o">=</span> <span class="n">prolog1</span><span class="p">;</span>
+    <span class="n">state</span><span class="o">-&gt;</span><span class="n">handler</span> <span class="o">=</span> <span class="n">prolog1</span><span class="p">;</span>
     <span class="k">return</span> <span class="n">XML_ROLE_XML_DECL</span><span class="p">;</span>
 </pre></div>
 
@@ -477,7 +477,7 @@ to come.</p>
     <span class="k">enum</span> <span class="n">XML_Error</span> <span class="n">result</span> <span class="o">=</span> <span class="n">processXmlDecl</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">next</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">XML_ERROR_NONE</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
-    <span class="n">enc</span> <span class="o">=</span> <span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_encoding</span><span class="p">;</span>
+    <span class="n">enc</span> <span class="o">=</span> <span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_encoding</span><span class="p">;</span>
     <span class="n">handleDefault</span> <span class="o">=</span> <span class="n">XML_FALSE</span><span class="p">;</span>
   <span class="p">}</span>
   <span class="k">break</span><span class="p">;</span>
@@ -503,13 +503,13 @@ zero (<code>XML_FALSE</code>), since we are not processing a general text entity
 <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">versionend</span><span class="p">;</span>
 <span class="k">const</span> <span class="n">XML_Char</span> <span class="o">*</span><span class="n">storedversion</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 <span class="kt">int</span> <span class="n">standalone</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_ns</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_ns</span>
       <span class="o">?</span> <span class="nl">XmlParseXmlDeclNS</span>
       <span class="p">:</span> <span class="n">XmlParseXmlDecl</span><span class="p">)(</span><span class="n">isGeneralTextEntity</span><span class="p">,</span>
-                         <span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_encoding</span><span class="p">,</span>
+                         <span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_encoding</span><span class="p">,</span>
                          <span class="n">s</span><span class="p">,</span>
                          <span class="n">next</span><span class="p">,</span>
-                         <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_eventPtr</span><span class="p">,</span>
+                         <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_eventPtr</span><span class="p">,</span>
                          <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">version</span><span class="p">,</span>
                          <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">versionend</span><span class="p">,</span>
                          <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">encodingName</span><span class="p">,</span>
@@ -539,8 +539,8 @@ declaration.</p>
 <div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">val</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">nameEnd</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="n">ptr</span> <span class="o">+=</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
-<span class="n">end</span> <span class="o">-=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
+<span class="n">ptr</span> <span class="o">+=</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
+<span class="n">end</span> <span class="o">-=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
 <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">parsePseudoAttribute</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">nameEnd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">val</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">ptr</span><span class="p">)</span>
     <span class="o">||</span> <span class="o">!</span><span class="n">name</span><span class="p">)</span> <span class="p">{</span>
 </pre></div>
@@ -649,7 +649,7 @@ separate pseudo-attributes, so we don't throw our hands up in
 horror<sup><a href="#horror">2</a></sup> and return an error.  Instead we proceed
 to skip over any further optional whitespace:</p>
 <div class="highlight"><pre><span></span><span class="k">do</span> <span class="p">{</span>
-  <span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
+  <span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">isSpace</span><span class="p">(</span><span class="n">toAscii</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">end</span><span class="p">)));</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">==</span> <span class="n">end</span><span class="p">)</span> <span class="p">{</span>
   <span class="o">*</span><span class="n">namePtr</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
@@ -696,7 +696,7 @@ name.  We record that and break out of the loop.</p>
 <div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">isSpace</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="p">{</span>
   <span class="o">*</span><span class="n">nameEndPtr</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
   <span class="k">do</span> <span class="p">{</span>
-    <span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
+    <span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
   <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">isSpace</span><span class="p">(</span><span class="n">c</span> <span class="o">=</span> <span class="n">toAscii</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">end</span><span class="p">)));</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">!=</span> <span class="n">ASCII_EQUALS</span><span class="p">)</span> <span class="p">{</span>
     <span class="o">*</span><span class="n">nextTokPtr</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
@@ -712,7 +712,7 @@ pseudo-attribute name, but we need to hunt on until we find something
 that isn't whitespace.  If that something isn't an equals sign, we
 have an error; otherwise we break out of the loop just like when we
 found the equals sign earlier.</p>
-<div class="highlight"><pre><span></span><span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
 </pre></div>
 
 
@@ -746,10 +746,10 @@ character of the "name" was actually the equals sign.  That's clearly
 an error, so we would return 0 to complain about it.  Fortunately we
 don't have that problem, so we move <code>ptr</code> on from the equals and skip
 over any whitespace there might be before the pseudo-attribute value.</p>
-<div class="highlight"><pre><span></span><span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">toAscii</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
 <span class="k">while</span> <span class="p">(</span><span class="n">isSpace</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="p">{</span>
-  <span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
+  <span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
   <span class="n">c</span> <span class="o">=</span> <span class="n">toAscii</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">!=</span> <span class="n">ASCII_QUOT</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">!=</span> <span class="n">ASCII_APOS</span><span class="p">)</span> <span class="p">{</span>
@@ -767,7 +767,7 @@ It's not entirely clear why these are considered preferable to
 character literals, but the code makes liberal use of them.
 Regardless, we have a double quote here so we don't return an error.</p>
 <div class="highlight"><pre><span></span><span class="n">open</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">c</span><span class="p">;</span>
-<span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
+<span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
 <span class="o">*</span><span class="n">valPtr</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
 </pre></div>
 
@@ -784,13 +784,13 @@ allowed in the value of any pseudo-attribute: ASCII alphanumerics, a
 period, a minus sign or an underscore.  The following loop therefore
 looks rather different to the equivalent for handling normal element
 attributes:</p>
-<div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(;;</span> <span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(;;</span> <span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">c</span> <span class="o">=</span> <span class="n">toAscii</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="n">open</span><span class="p">)</span>
     <span class="k">break</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">ASCII_a</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">ASCII_z</span><span class="p">)</span>
-      <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="o">!</span><span class="p">(</span><span class="n">ASCII_A</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">ASCII_Z</span><span class="p">)</span>
-      <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="o">!</span><span class="p">(</span><span class="n">ASCII_0</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">ASCII_9</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">ASCII_a</span> <span class="o">&lt;</span><span class="o">=</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">&lt;</span><span class="o">=</span> <span class="n">ASCII_z</span><span class="p">)</span>
+      <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="o">!</span><span class="p">(</span><span class="n">ASCII_A</span> <span class="o">&lt;</span><span class="o">=</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">&lt;</span><span class="o">=</span> <span class="n">ASCII_Z</span><span class="p">)</span>
+      <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="o">!</span><span class="p">(</span><span class="n">ASCII_0</span> <span class="o">&lt;</span><span class="o">=</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">&lt;</span><span class="o">=</span> <span class="n">ASCII_9</span><span class="p">)</span>
       <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">!=</span> <span class="n">ASCII_PERIOD</span>
       <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">!=</span> <span class="n">ASCII_MINUS</span>
       <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">!=</span> <span class="n">ASCII_UNDERSCORE</span><span class="p">)</span> <span class="p">{</span>
@@ -840,7 +840,7 @@ why.<sup><a href="#lightbrigade">5</a></sup></p>
                          <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">end1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ptr2</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">for</span> <span class="p">(;</span> <span class="o">*</span><span class="n">ptr2</span><span class="p">;</span> <span class="n">ptr1</span> <span class="o">+=</span> <span class="n">MINBPC</span><span class="p">(</span><span class="n">enc</span><span class="p">),</span> <span class="n">ptr2</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">end1</span> <span class="o">-</span> <span class="n">ptr1</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">MINBPC</span><span class="p">(</span><span class="n">enc</span><span class="p">))</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">end1</span> <span class="o">-</span> <span class="n">ptr1</span> <span class="o">&lt;</span> <span class="n">MINBPC</span><span class="p">(</span><span class="n">enc</span><span class="p">))</span>
       <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">CHAR_MATCHES</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">ptr1</span><span class="p">,</span> <span class="o">*</span><span class="n">ptr2</span><span class="p">))</span>
       <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -905,15 +905,15 @@ and indeed it is.  We are then treated to the ASCII version of
 <code>IS_NMSTRT_CHAR()</code>.</p>
 <div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">XmlNameMatchesAscii</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">nameEnd</span><span class="p">,</span> <span class="n">KW_encoding</span><span class="p">))</span> <span class="p">{</span>
   <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">toAscii</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">ASCII_a</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">ASCII_z</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span>
-      <span class="o">!</span><span class="p">(</span><span class="n">ASCII_A</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">ASCII_Z</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">ASCII_a</span> <span class="o">&lt;</span><span class="o">=</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">&lt;</span><span class="o">=</span> <span class="n">ASCII_z</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span>
+      <span class="o">!</span><span class="p">(</span><span class="n">ASCII_A</span> <span class="o">&lt;</span><span class="o">=</span> <span class="n">c</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">c</span> <span class="o">&lt;</span><span class="o">=</span> <span class="n">ASCII_Z</span><span class="p">))</span> <span class="p">{</span>
     <span class="o">*</span><span class="n">badPtr</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
   <span class="p">}</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">encodingName</span><span class="p">)</span>
     <span class="o">*</span><span class="n">encodingName</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
-    <span class="o">*</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encodingFinder</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">ptr</span> <span class="o">-</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span><span class="p">);</span>
+    <span class="o">*</span><span class="n">encoding</span> <span class="o">=</span> <span class="n">encodingFinder</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">ptr</span> <span class="o">-</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span><span class="p">);</span>
 </pre></div>
 
 
@@ -935,7 +935,7 @@ encoding name and call the <code>encodingFinder</code> function supplied.</p>
   <span class="k">if</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">!=</span> <span class="n">end</span><span class="p">)</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
   <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">streqci</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">KW_UTF_16</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">streqci</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">KW_UTF_16</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">enc</span><span class="p">;</span>
   <span class="n">i</span> <span class="o">=</span> <span class="n">getEncodingIndex</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">UNKNOWN_ENC</span><span class="p">)</span>
@@ -983,7 +983,7 @@ unnecessary.</p>
   <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">NO_ENC</span><span class="p">;</span>
   <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-       <span class="n">i</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">encodingNames</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="n">encodingNames</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+       <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">encodingNames</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="n">encodingNames</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
        <span class="n">i</span><span class="o">++</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">streqci</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">encodingNames</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
       <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
@@ -1024,12 +1024,12 @@ more to do.  Which there is.</p>
 <p>Furthermore its value must be either "yes" or "no"; nothing else is
 allowed.</p>
 <div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">XmlNameMatchesAscii</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span>
-                        <span class="n">ptr</span> <span class="o">-</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span><span class="p">,</span> <span class="n">KW_yes</span><span class="p">))</span> <span class="p">{</span>
+                        <span class="n">ptr</span> <span class="o">-</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span><span class="p">,</span> <span class="n">KW_yes</span><span class="p">))</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">standalone</span><span class="p">)</span>
     <span class="o">*</span><span class="n">standalone</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">XmlNameMatchesAscii</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span>
-                             <span class="n">ptr</span> <span class="o">-</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span><span class="p">,</span> <span class="n">KW_no</span><span class="p">))</span> <span class="p">{</span>
+                             <span class="n">ptr</span> <span class="o">-</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span><span class="p">,</span> <span class="n">KW_no</span><span class="p">))</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">standalone</span><span class="p">)</span>
     <span class="o">*</span><span class="n">standalone</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
@@ -1044,7 +1044,7 @@ allowed.</p>
 for <code>doParseXmlDecl()</code> to do is to skip over any trailing whitespace
 and complain if there's anything else in the declaration.</p>
 <div class="highlight"><pre><span></span>  <span class="k">while</span> <span class="p">(</span><span class="n">isSpace</span><span class="p">(</span><span class="n">toAscii</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">ptr</span><span class="p">,</span> <span class="n">end</span><span class="p">)))</span>
-    <span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
+    <span class="n">ptr</span> <span class="o">+=</span> <span class="n">enc</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">!=</span> <span class="n">end</span><span class="p">)</span> <span class="p">{</span>
     <span class="o">*</span><span class="n">badPtr</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -1068,10 +1068,10 @@ pointers.</p>
 <code>ascii_encoding</code> and <code>standalone</code> is now 1.  We then perform some
 basic checks and transfer these results somewhere more useful.</p>
 <div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isGeneralTextEntity</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">standalone</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_dtd</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">standalone</span> <span class="o">=</span> <span class="n">XML_TRUE</span><span class="p">;</span>
+  <span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_dtd</span><span class="o">-&gt;</span><span class="n">standalone</span> <span class="o">=</span> <span class="n">XML_TRUE</span><span class="p">;</span>
 <span class="cp">#ifdef XML_DTD</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_paramEntityParsing</span> <span class="o">==</span> <span class="n">XML_PARAM_ENTITY_PARSING_UNLESS_STANDALONE</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_paramEntityParsing</span> <span class="o">=</span> <span class="n">XML_PARAM_ENTITY_PARSING_NEVER</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_paramEntityParsing</span> <span class="o">==</span> <span class="n">XML_PARAM_ENTITY_PARSING_UNLESS_STANDALONE</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_paramEntityParsing</span> <span class="o">=</span> <span class="n">XML_PARAM_ENTITY_PARSING_NEVER</span><span class="p">;</span>
 <span class="cp">#endif </span><span class="cm">/* XML_DTD */</span><span class="cp"></span>
 <span class="p">}</span>
 </pre></div>
@@ -1093,15 +1093,15 @@ another time, so we won't go into the ramifications of that now.</p>
 handler, that gets called next.  Let's assume that we don't have
 handlers and move on to dealing with the encoding.  This is more
 complicated than you might hope.</p>
-<div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_protocolEncodingName</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_protocolEncodingName</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">newEncoding</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">newEncoding</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span> <span class="o">!=</span> <span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_encoding</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBytesPerChar</span>
-        <span class="o">||</span> <span class="p">(</span><span class="n">newEncoding</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">minBYtesPerChar</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span>
-            <span class="n">newEncoding</span> <span class="o">!=</span> <span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_encoding</span><span class="p">))</span> <span class="p">{</span>
-      <span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_eventPtr</span> <span class="o">=</span> <span class="n">encodingName</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">newEncoding</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span> <span class="o">!=</span> <span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_encoding</span><span class="o">-&gt;</span><span class="n">minBytesPerChar</span>
+        <span class="o">||</span> <span class="p">(</span><span class="n">newEncoding</span><span class="o">-&gt;</span><span class="n">minBYtesPerChar</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span>
+            <span class="n">newEncoding</span> <span class="o">!=</span> <span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_encoding</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_eventPtr</span> <span class="o">=</span> <span class="n">encodingName</span><span class="p">;</span>
       <span class="k">return</span> <span class="n">XML_ERROR_INCORRECT_ENCODING</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_encoding</span> <span class="o">=</span> <span class="n">newEncoding</span><span class="p">;</span>
+    <span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_encoding</span> <span class="o">=</span> <span class="n">newEncoding</span><span class="p">;</span>
   <span class="p">}</span>
 </pre></div>
 
@@ -1135,15 +1135,15 @@ for overrides only.</p>
   <span class="k">enum</span> <span class="n">XML_Error</span> <span class="n">result</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">storedEncName</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">storedEncName</span> <span class="o">=</span> <span class="n">poolStoreString</span><span class="p">(</span>
-      <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_temp2Pool</span><span class="p">,</span> <span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_encoding</span><span class="p">,</span> <span class="n">encodingName</span><span class="p">,</span>
-      <span class="n">encodingName</span> <span class="o">+</span> <span class="n">XmlNameLength</span><span class="p">(</span><span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_encoding</span><span class="p">,</span> <span class="n">encodingName</span><span class="p">));</span>
+      <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_temp2Pool</span><span class="p">,</span> <span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_encoding</span><span class="p">,</span> <span class="n">encodingName</span><span class="p">,</span>
+      <span class="n">encodingName</span> <span class="o">+</span> <span class="n">XmlNameLength</span><span class="p">(</span><span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_encoding</span><span class="p">,</span> <span class="n">encodingName</span><span class="p">));</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">storedEncName</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">XML_ERROR_NO_MEMORY</span><span class="p">;</span>
   <span class="p">}</span>
   <span class="n">result</span> <span class="o">=</span> <span class="n">handleUnknownEncoding</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">storedEncName</span><span class="p">);</span>
-  <span class="n">poolClear</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_temp2Pool</span><span class="p">);</span>
+  <span class="n">poolClear</span><span class="p">(</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_temp2Pool</span><span class="p">);</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">XML_ERROR_UNKNOWN_ENCODING</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">m_eventPtr</span> <span class="o">=</span> <span class="n">encodingName</span><span class="p">;</span>
+    <span class="n">parser</span><span class="o">-&gt;</span><span class="n">m_eventPtr</span> <span class="o">=</span> <span class="n">encodingName</span><span class="p">;</span>
   <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -1261,7 +1261,7 @@ walkthrough</a>, but then we were
 using <code>prolog0()</code> as the handler.  This time we have <code>prolog1()</code>, so
 we can't necessarily expect it will tell us the same role.</p>
 <div class="highlight"><pre><span></span><span class="k">case</span> <span class="nl">XML_TOK_INSTANCE_START</span><span class="p">:</span>
-  <span class="n">state</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">handler</span> <span class="o">=</span> <span class="n">error</span><span class="p">;</span>
+  <span class="n">state</span><span class="o">-&gt;</span><span class="n">handler</span> <span class="o">=</span> <span class="n">error</span><span class="p">;</span>
   <span class="k">return</span> <span class="n">XML_ROLE_INSTANCE_START</span><span class="p">;</span>
 </pre></div>
 
