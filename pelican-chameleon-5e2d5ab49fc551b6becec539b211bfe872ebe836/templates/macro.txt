@@ -1,0 +1,104 @@
+   {% macro genurl(string, force=False) %} {% if (force or (
+   string.startswith('/') and not string.startswith('//') )) %} {% set url
+   = '/'.join([SITEURL.rstrip('/'),string.lstrip('/')]) %} {{- url -}} {%
+   else %} {{- string -}} {% endif %} {% endmacro %} {% macro
+   newtab(string, force=False) %} {% if force %} target="_blank" {% endif
+   %} {% endmacro %} {% macro article_panel_list(parent='', id='',
+   title_left='', title_right='', entry_list=[], show_date=False,
+   title_left_link='') %} {% if not title_left_link %} {% set
+   title_left_link = "#%s" % id %} {% endif %}
+
+   [1]{{- title_left -}} {% if title_right %} [2]{{- title_right -}} {%
+   endif %}
+       {% for article in entry_list %}
+     {% if show_date %} {{- article.date|strftime("%m-%d") -}} · {% endif
+       %} {{- article.title -}} {% endfor %}
+
+   {% endmacro %} {% macro pagetitle(name) %} {% if name and name != '' %}
+   {% else %} {% endif %} {% endmacro %} {% macro pageheader(name, link)
+   %} {% if name and name != '' %}
+
+   {% if link %}
+
+[3]{{ name }}
+
+   {% else %}
+
+{{ name }}
+
+   {% endif %}
+
+   {% endif %} {% endmacro %} {% macro navbar(link) %}
+
+   (BUTTON) Toggle navigation [4]{{ SITENAME }}
+   {% for title,url in MENUITEMS %} {% if title == 'Search' %}
+   ____________________
+   {% endif %} {% endfor %}
+   {% for title,url in MENUITEMS %} {% if url is string %} {% if title !=
+       'Search' %}
+     * [5]{{ title }} {% endif %} {% elif url is iterable %}
+     * [6]{{- title }}
+        {% for title,item_url in url %}
+          + [7]{{ title }} {% endfor %}
+       {% endif %} {% endfor %}
+
+   {% endmacro %} {% macro footer() %}
+
+   Compiled using [8]Pelican with theme [9]Chameleon on top of [10]
+   Bootstrap
+
+   {% endmacro %} {% macro pagination() %} {% if DEFAULT_PAGINATION %}
+   {% if articles_page.has_previous() %}
+     * {% if articles_page.previous_page_number() == 1 %} [11]<< {% else
+       %} [12]<< {% endif %} {% else %}
+     * << {% endif %} {% for num in articles_paginator.page_range %} {% if
+       articles_page.number != num %}
+     * {% if num == 1 %} {% set page_link = page_name+'.html' %} {% else
+       %} {% set page_link = page_name+num|string+'.html' %} {% endif %}
+       [13]{{- num }}(current) {% else %}
+     * {{- num }}(current) {% endif %} {% endfor %} {% if
+       articles_page.has_next() %}
+     * [14]>> {% else %}
+     * >> {% endif %}
+
+   {% endif %} {% endmacro %} {% macro article_info(article) %} [15]{{-
+   article.category -}} {% if article.tags %} · {% for tag in
+   article.tags %} [16]{{- tag -}} {% endfor %} {% endif %} {% if
+   article.locale_date %} · {% set year = article.date|strftime('%Y') %}
+   {% set month = article.date|strftime('%m') %} {% set day =
+   article.date|strftime('%d') %} [17]{{ year }} {{- '-' -}} [18]{{ month
+   }} {{- '-' -}} [19]{{ day }} {% endif %} {% if article.author %} · {%
+   if article.author.name in AUTHORS %} {% set author_url =
+   AUTHORS[article.author.name] %} {% else %} {% set author_url =
+   ["/author/",article.author.name,".html"]|join %} {% endif %} [20]{{
+   article.author.name }} {% endif %} {% endmacro %} {% macro
+   taglist(list,prefix='',suffix='') %} {% for tag, articles in list|sort
+   %} [21]{{- tag }} {{ articles|count }} {% endfor %} {% endmacro %}
+
+References
+
+   Visible links
+   1. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20title_left_link%20)%20}}
+   2. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/macro.html#{{ id }}collapse
+   3. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20link%20)%20}}
+   4. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20SITEURL%20)%20}}
+   5. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20url%20)%20}}
+   6. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/macro.html
+   7. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20item_url%20)%20}}
+   8. https://docs.getpelican.com/
+   9. https://github.com/yuex/pelican-chameleon
+  10. https://getbootstrap.com/
+  11. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20page_name%20+%20'.html',%20force=True%20)%20}}
+  12. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20page_name%20+%20articles_page.previous_page_number()|string%20+%20'.html'%20)%20}}
+  13. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20page_link,%20force=True%20)%20}}
+  14. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20page_name%20+%20articles_page.next_page_number()|string%20+%20'.html'%20)%20}}
+  15. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20'/'%20+%20article.category.url|string)%20}}
+  16. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20'/'%20+%20tag.url|string)%20}}
+  17. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20'/archives.html#Year' + year ) }}
+  18. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20'/archives.html#Year' + year + 'Month' + month ) }}
+  19. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20'/archives.html#Year' + year + 'Month' + month ) }}
+  20. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20author_url%20)%20}}
+  21. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{prefix}}{{tag}}{{suffix}}
+
+   Hidden links:
+  23. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20article.url,%20force=True%20)%20}}

@@ -1,0 +1,167 @@
+   (BUTTON) Toggle navigation [1]Expat XML parser
+     * [2]Changelog
+     * [3]Download
+     * [4]Documentation
+     * [5]Git Repository
+     * [6]Users
+     * [7]Report a Bug
+
+[8]Expat Packages
+
+     Please note, this website is work-in-progress.
+     Be encouraged to [9]join improving this website. Thank you!
+
+   Wherever you go, Expat is already waiting for you:
+     * Cross-platform
+          + [10]CPPAN
+          + [11]Hunter
+          + [12]OpenPKG
+          + [13]vcpkg
+     * AIX
+          + [14]AIX Open Source Packages
+     * BSD
+          + [15]DragonFlyBSD
+          + [16]FreeBSD
+          + [17]MirOS BSD
+          + [18]NetBSD
+          + [19]OpenBSD
+          + [20]Ravenports
+     * Haiku
+          + [21]HaikuPorts
+     * Linux
+          + [22]Alpine Linux
+          + [23]ALT Linux
+          + [24]AOSC
+          + [25]Arch Linux
+          + [26]Buildroot
+          + [27]CentOS
+          + [28]Clear Linux
+          + CRUX [29][1] [30][2]
+          + [31]Debian
+          + [32]Exherbo
+          + [33]Fedora
+          + [34]Funtoo
+          + [35]Gentoo
+          + [36]Gobo Linux
+          + [37]GuixSD
+          + [38]Hyperbola
+          + [39]KaOSx
+          + [40]LEDE
+          + [41]Linuxbrew
+          + [42]Linux Mint
+          + [43]Lunar Linux
+          + [44]Mageia
+          + [45]meta-debian
+          + [46]NixOS
+          + [47]OpenMandriva
+          + [48]openSUSE
+          + [49]OpenWrt
+          + [50]Parabola
+          + [51]PCLinuxOS
+          + [52]PLD Linux
+          + [53]PTXdist
+          + [54]ROSA Linux
+          + [55]Slackware
+          + [56]SliTaz GNU/Linux
+          + [57]Solus Project
+          + [58]T2 SDE
+          + [59]Ubuntu
+          + [60]Void Linux
+          + [61]Yocto Project
+     * macOS
+          + [62]Fink
+          + [63]Gentoo Prefix
+          + [64]Homebrew
+          + [65]MacPorts
+          + [66]Rudix
+     * Solaris
+          + [67]OpenCSW
+          + [68]ORACLE Solaris
+     * Windows
+          + [69]Cygwin
+          + [70]Native installer
+          + [71]NuGet
+
+   See also:
+     * [72]Versions for expat (repology.org)
+
+   Compiled using [73]Pelican with theme [74]Chameleon on top of [75]
+   Bootstrap
+
+References
+
+   1. file://localhost/media/sda_/tmp/libexpat.github.io
+   2. https://github.com/libexpat/libexpat/blob/master/expat/Changes
+   3. https://github.com/libexpat/libexpat/releases
+   4. https://libexpat.github.io/doc/
+   5. https://github.com/libexpat/libexpat
+   6. https://libexpat.github.io/doc/users/
+   7. https://github.com/libexpat/libexpat/issues
+   8. file://localhost/media/sda_/tmp/libexpat.github.io/doc/packages/
+   9. file://localhost/media/sda_/tmp/libexpat.github.io/doc/contribute-website/
+  10. https://cppan.org/pvt.cppan.demo.expat
+  11. https://github.com/ruslo/hunter/blob/master/cmake/projects/Expat/hunter.cmake
+  12. http://download.openpkg.org/packages/current/source/BASE/
+  13. https://github.com/Microsoft/vcpkg/blob/master/ports/expat/CONTROL
+  14. http://www.oss4aix.org/download/SRPMS/expat/
+  15. https://github.com/DragonFlyBSD/DPorts/tree/master/textproc/expat2
+  16. https://svnweb.freebsd.org/ports/head/textproc/expat2/
+  17. https://www.mirbsd.org/cvs.cgi/ports/textproc/expat/
+  18. http://pkgsrc.se/textproc/expat
+  19. http://cvsweb.openbsd.org/cgi-bin/cvsweb/src/lib/libexpat/
+  20. https://github.com/jrmarino/Ravenports/blob/master/bucket_31/expat
+  21. https://github.com/haikuports/haikuports/tree/master/dev-libs/expat
+  22. https://git.alpinelinux.org/cgit/aports/tree/main/expat
+  23. https://packages.altlinux.org/en/Sisyphus/srpms/expat
+  24. https://packages.aosc.io/packages/expat
+  25. https://git.archlinux.org/svntogit/packages.git/log/trunk?h=packages/expat
+  26. https://git.busybox.net/buildroot/tree/package/expat
+  27. http://centos-packages.com/7/package/expat/versions/
+  28. https://github.com/clearlinux-pkgs/expat/commits/master
+  29. https://crux.nu/gitweb/?p=ports/compat-32.git;a=tree;f=expat-32;hb=HEAD
+  30. https://crux.nu/gitweb/?p=ports/opt.git;a=tree;f=expat;hb=HEAD
+  31. https://packages.debian.org/source/sid/expat
+  32. http://git.exherbo.org/arbor.git/tree/packages/dev-libs/expat
+  33. https://apps.fedoraproject.org/packages/expat/overview/
+  34. https://github.com/funtoo/core-kit/tree/master/dev-libs/expat
+  35. https://packages.gentoo.org/packages/dev-libs/expat
+  36. https://github.com/gobolinux/Recipes/tree/master/revisions/Expat
+  37. https://www.gnu.org/software/guix/packages/E/page/4/
+  38. https://www.hyperbola.info/packages/core/x86_64/expat/
+  39. https://github.com/KaOSx/core/blob/master/expat
+  40. https://github.com/lede-project/source/blob/master/tools/expat/Makefile
+  41. http://braumeister.org/formula/expat
+  42. https://community.linuxmint.com/software/view/libexpat1-dev
+  43. https://github.com/lunar-linux/moonbase-core/tree/master/libs/expat
+  44. https://madb.mageia.org/package/show/name/expat/release/cauldron/application/0/arch/x86_64
+  45. https://github.com/meta-debian/meta-debian/blob/master/recipes-debian/expat/expat_debian.bb
+  46. https://github.com/NixOS/nixpkgs/commits/master/pkgs/development/libraries/expat/default.nix
+  47. https://github.com/OpenMandrivaAssociation/expat
+  48. https://build.opensuse.org/package/show/devel:libraries:c_c++/expat
+  49. https://github.com/openwrt/packages/blob/master/libs/expat/Makefile
+  50. https://www.parabola.nu/packages/testing/x86_64/expat/
+  51. http://ftp.nluug.nl/pub/os/Linux/distr/pclinuxos/pclinuxos/srpms/SRPMS.pclos/
+  52. https://git.pld-linux.org/?p=packages/expat.git;a=summary
+  53. https://git.pengutronix.de/cgit/ptxdist/tree/rules/expat.make
+  54. https://abf.rosalinux.ru/import/expat
+  55. http://slackware.osuosl.org/slackware64-current/source/l/expat/
+  56. http://mirror1.slitaz.org/packages/next/
+  57. https://dev.solus-project.com/source/expat/
+  58. https://svn.exactcode.de/t2/trunk/package/base/expat/expat.desc
+  59. https://launchpad.net/ubuntu/+source/expat
+  60. https://github.com/void-linux/void-packages/blob/master/srcpkgs/expat/template
+  61. https://git.yoctoproject.org/cgit.cgi/poky/tree/meta/recipes-core/expat
+  62. http://pdb.finkproject.org/pdb/package.php/expat1
+  63. https://packages.gentoo.org/packages/dev-libs/expat
+  64. http://brewformulas.org/Expat
+  65. https://github.com/macports/macports-ports/blob/master/textproc/expat/Portfile
+  66. http://rudix.org/packages/expat.html
+  67. https://www.opencsw.org/package/expat/
+  68. http://pkg.oracle.com/solaris/release/en/search.shtml?token=expat&action=Search
+  69. https://cygwin.com/packages/x86_64/expat/
+  70. https://github.com/libexpat/libexpat/releases
+  71. https://www.nuget.org/packages?q=expat
+  72. https://repology.org/metapackage/expat/versions
+  73. https://docs.getpelican.com/
+  74. https://github.com/yuex/pelican-chameleon
+  75. https://getbootstrap.com/

@@ -1,0 +1,47 @@
+   (BUTTON) Toggle navigation [1]Expat XML parser
+     * [2]Changelog
+     * [3]Download
+     * [4]Documentation
+     * [5]Git Repository
+     * [6]Users
+     * [7]Report a Bug
+
+[8]Getting Started With Expat
+
+   Expat is a stream-oriented parser in which an application registers
+   handlers for things the parser might find in the XML document (like
+   start tags).
+
+   An [9]introductory article on using Expat is available on [10]xml.com.
+
+   There are also two examples coming with Expat (but they provide little
+   background):
+     * [11]elements.c
+     * [12]outline.c
+
+   For further reading, please consider:
+     * [13]XML Security
+     * [14]Common Pitfalls
+
+   Compiled using [15]Pelican with theme [16]Chameleon on top of [17]
+   Bootstrap
+
+References
+
+   1. file://localhost/media/sda_/tmp/libexpat.github.io
+   2. https://github.com/libexpat/libexpat/blob/master/expat/Changes
+   3. https://github.com/libexpat/libexpat/releases
+   4. https://libexpat.github.io/doc/
+   5. https://github.com/libexpat/libexpat
+   6. https://libexpat.github.io/doc/users/
+   7. https://github.com/libexpat/libexpat/issues
+   8. file://localhost/media/sda_/tmp/libexpat.github.io/doc/getting-started/
+   9. https://www.xml.com/pub/1999/09/expat/index.html
+  10. https://www.xml.com/pub/1999/09/expat/index.html
+  11. https://github.com/libexpat/libexpat/blob/master/expat/examples/elements.c
+  12. https://github.com/libexpat/libexpat/blob/master/expat/examples/outline.c
+  13. file://localhost/media/sda_/tmp/libexpat.github.io/doc/xml-security/
+  14. file://localhost/media/sda_/tmp/libexpat.github.io/doc/common-pitfalls/
+  15. https://docs.getpelican.com/
+  16. https://github.com/yuex/pelican-chameleon
+  17. https://getbootstrap.com/

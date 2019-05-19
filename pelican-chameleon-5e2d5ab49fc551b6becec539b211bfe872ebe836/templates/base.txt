@@ -1,0 +1,19 @@
+   {% from 'macro.html' import genurl with context %} {% if FAVICON and
+   FAVICON_TYPE %} {% endif %} {% from 'macro.html' import pagetitle with
+   context %} {{ pagetitle(name) }} {% if BS3_URL %} {% else %} {% endif
+   %} {% if BS3_THEME %} {% endif %} {% if CODE_HIGHLIGHT %} {% else %} {%
+   endif %} {% if CSS_OVERWRITE %} {% endif %} {% if JQUERY_JS %} {% else
+   %} {% endif %} {% if JQUERY_MIGRATE_JS %} {% else %} {% endif %} {% if
+   BS3_JS %} {% else %} {% endif %}
+
+   {% set link = ['/',link]|join %} {% from 'macro.html' import navbar
+   with context %} {{ navbar(link) }}
+   {% block left_sidebar %}{% endblock %}
+   {% from 'macro.html' import pageheader with context %} {{
+   pageheader(name,link) }}
+   {% block content %}{% endblock %}
+   {% block pagefooter %}{% endblock %}
+   {% block right_sidebar %}{% endblock %}
+
+   {% from 'macro.html' import footer with context %} {{ footer() }} {%
+   include 'analytics.html' %}

@@ -1,0 +1,6 @@
+   {% set name = page.title %} {% set link = page.url %} {% extends
+   "base.html" %} {% block content %}
+
+   {{ page.content }}
+
+   {% endblock %}

@@ -1,0 +1,7 @@
+   {% if GITHUB_URL %} [1]{% if GITHUB_POSITION != "left" %} Fork me on
+   GitHub {% else %} Fork me on GitHub {% endif %} {% endif %}
+
+
+References
+
+   1. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20GITHUB_URL%20}}

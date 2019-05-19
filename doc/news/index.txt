@@ -1,0 +1,92 @@
+   (BUTTON) Toggle navigation [1]Expat XML parser
+     * [2]Changelog
+     * [3]Download
+     * [4]Documentation
+     * [5]Git Repository
+     * [6]Users
+     * [7]Report a Bug
+
+[8]Expat News
+
+     * 2018-08-15 -- [9]Expat 2.2.6 has been released
+     * 2018-06-24 -- New article: [10]Writing New Tests for Expat
+     * 2018-02-07 -- New article: [11]Expat Internals: Encoding
+     * 2017-10-31 -- [12]Expat 2.2.5 has been released
+     * 2017-10-21 -- New article: [13]Writing A Custom Encoding describes
+       how to add a custom character encoding to your parser.
+     * 2017-10-21 -- New article: [14]Expat Internals: Parsing XML
+       Declarations
+     * 2017-08-19 -- [15]Expat 2.2.4 has been released
+     * 2017-08-02 -- [16]Expat 2.2.3 has been released
+     * 2017-07-19 -- New article: [17]Expat Internals: String Pools
+       describes the parser's temporary storage mechanism for strings.
+     * 2017-07-13 -- [18]Expat 2.2.2 has been released
+     * 2017-06-29 -- New article [19]Expat Internals: The Hash Tables
+       describes the parser's internal hash tables and how they are used.
+     * 2017-06-23 -- New article [20]Expat Internals: A Simple Parse walks
+       you through the parsing of a short piece of XML
+     * 2017-06-17 -- [21]Expat 2.2.1 has been released
+     * 2017-06-17 -- CVE-2017-9233: [22]External Entity Vulnerability in
+       Expat 2.2.0 And Earlier
+     * 2016-06-21 -- [23]Expat 2.2.0 has been released
+     * 2016-03-12 -- [24]Expat 2.1.1 has been released
+     * 2012-03-24 -- [25]Expat 2.1.0 has been released
+     * 2007-06-05 -- [26]Expat 2.0.1 has been released
+     * 2006-01-11 -- [27]Expat 2.0.0 has been released
+     * 2004-07-23 -- [28]Expat 1.95.8 has been released
+     * 2003-10-20 -- [29]Expat 1.95.7 has been released
+     * 2003-01-28 -- [30]Expat 1.95.6 has been released
+     * 2002-09-06 -- [31]Expat 1.95.5 has been released
+     * 2002-07-12 -- [32]Expat 1.95.4 has been released
+     * 2002-06-03 -- [33]Expat 1.95.3 has been released
+     * 2001-07-27 -- [34]Expat 1.95.2 has been released
+     * 2000-10-22 -- [35]Expat 1.95.1 has been released
+     * 2000-09-29 -- [36]Expat 1.95.0 has been released
+     * 1999-01-09 -- Expat 1.0.2 has been released
+     * 1998-11-22 -- Expat 1.0.1 has been released
+     * 1998-08-14 -- Expat 1.0 has been released
+
+   Compiled using [37]Pelican with theme [38]Chameleon on top of [39]
+   Bootstrap
+
+References
+
+   1. file://localhost/media/sda_/tmp/libexpat.github.io
+   2. https://github.com/libexpat/libexpat/blob/master/expat/Changes
+   3. https://github.com/libexpat/libexpat/releases
+   4. https://libexpat.github.io/doc/
+   5. https://github.com/libexpat/libexpat
+   6. https://libexpat.github.io/doc/users/
+   7. https://github.com/libexpat/libexpat/issues
+   8. file://localhost/media/sda_/tmp/libexpat.github.io/doc/news/
+   9. https://github.com/libexpat/libexpat/blob/R_2_2_6/expat/Changes
+  10. file://localhost/media/sda_/tmp/libexpat.github.io/doc/writing-new-tests-for-expat/
+  11. file://localhost/media/sda_/tmp/libexpat.github.io/doc/expat-internals-encodings/
+  12. https://github.com/libexpat/libexpat/blob/R_2_2_5/expat/Changes
+  13. file://localhost/media/sda_/tmp/libexpat.github.io/doc/writing-a-custom-encoding/
+  14. file://localhost/media/sda_/tmp/libexpat.github.io/doc/expat-internals-parsing-xml-declarations/
+  15. https://github.com/libexpat/libexpat/blob/R_2_2_4/expat/Changes
+  16. https://github.com/libexpat/libexpat/blob/R_2_2_3/expat/Changes
+  17. file://localhost/media/sda_/tmp/libexpat.github.io/doc/expat-internals-string-pools/
+  18. https://github.com/libexpat/libexpat/blob/R_2_2_2/expat/Changes
+  19. file://localhost/media/sda_/tmp/libexpat.github.io/doc/expat-internals-the-hash-tables/
+  20. file://localhost/media/sda_/tmp/libexpat.github.io/doc/expat-internals-a-simple-parse/
+  21. https://github.com/libexpat/libexpat/blob/R_2_2_1/expat/Changes
+  22. file://localhost/media/sda_/tmp/libexpat.github.io/doc/cve-2017-9233/
+  23. https://github.com/libexpat/libexpat/blob/R_2_2_0/expat/Changes
+  24. https://github.com/libexpat/libexpat/blob/R_2_1_1/expat/Changes
+  25. https://github.com/libexpat/libexpat/blob/R_2_1_0/expat/Changes
+  26. https://github.com/libexpat/libexpat/blob/R_2_0_1/expat/Changes
+  27. https://github.com/libexpat/libexpat/blob/R_2_0_0/expat/Changes
+  28. https://github.com/libexpat/libexpat/blob/R_1_95_8/expat/Changes
+  29. https://github.com/libexpat/libexpat/blob/R_1_95_7/expat/Changes
+  30. https://github.com/libexpat/libexpat/blob/R_1_95_6/expat/Changes
+  31. https://github.com/libexpat/libexpat/blob/R_1_95_5/expat/Changes
+  32. https://github.com/libexpat/libexpat/blob/R_1_95_4/expat/Changes
+  33. https://github.com/libexpat/libexpat/blob/R_1_95_3/expat/Changes
+  34. https://github.com/libexpat/libexpat/blob/R_1_95_2/expat/Changes
+  35. https://github.com/libexpat/libexpat/blob/R_1_95_2/expat/Changes#L13
+  36. https://github.com/libexpat/libexpat/blob/R_1_95_0/expat/Changes
+  37. https://docs.getpelican.com/
+  38. https://github.com/yuex/pelican-chameleon
+  39. https://getbootstrap.com/

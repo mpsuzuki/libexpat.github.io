@@ -1,0 +1,7 @@
+   {% macro translations_for(article) %} {% if article.translations %}
+   Translations: {% for translation in article.translations %} [1]{{
+   translation.lang }} {% endfor %} {% endif %} {% endmacro %}
+
+References
+
+   1. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20translation.url,%20force=True%20)%20}}

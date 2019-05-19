@@ -1,0 +1,45 @@
+   (BUTTON) Toggle navigation [1]Expat XML parser
+     * [2]Changelog
+     * [3]Download
+     * [4]Documentation
+     * [5]Git Repository
+     * [6]Users
+     * [7]Report a Bug
+
+[8]XML Security
+
+     Please note, this website is work-in-progress.
+     Be encouraged to [9]join improving this website. Thank you!
+
+Overview
+
+     * [10]Billion laughs attack
+     * [11]External entities
+
+Billion laughs attack
+
+   TODO
+
+External entities
+
+   TODO
+
+   Compiled using [12]Pelican with theme [13]Chameleon on top of [14]
+   Bootstrap
+
+References
+
+   1. file://localhost/media/sda_/tmp/libexpat.github.io
+   2. https://github.com/libexpat/libexpat/blob/master/expat/Changes
+   3. https://github.com/libexpat/libexpat/releases
+   4. https://libexpat.github.io/doc/
+   5. https://github.com/libexpat/libexpat
+   6. https://libexpat.github.io/doc/users/
+   7. https://github.com/libexpat/libexpat/issues
+   8. file://localhost/media/sda_/tmp/libexpat.github.io/doc/xml-security/
+   9. file://localhost/media/sda_/tmp/libexpat.github.io/doc/contribute-website/
+  10. file://localhost/media/sda_/tmp/libexpat.github.io/doc/xml-security/index.html#billion-laughs
+  11. file://localhost/media/sda_/tmp/libexpat.github.io/doc/xml-security/index.html#external-entities
+  12. https://docs.getpelican.com/
+  13. https://github.com/yuex/pelican-chameleon
+  14. https://getbootstrap.com/

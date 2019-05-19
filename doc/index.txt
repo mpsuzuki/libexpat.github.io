@@ -1,0 +1,70 @@
+   (BUTTON) Toggle navigation [1]Expat XML parser
+     * [2]Changelog
+     * [3]Download
+     * [4]Documentation
+     * [5]Git Repository
+     * [6]Users
+     * [7]Report a Bug
+
+[8]Documentation
+
+   This page is meant to serve as an index of Documentation on Expat.
+
+   Please read:
+    1. [9]Getting Started
+    2. [10]XML Security
+    3. [11]Common Pitfalls
+
+Other Resources
+
+     * [12]Expat Packages
+     * [13]Software using Expat
+     * [14]Bindings & 3rd-party Wrappers
+
+In Depth
+
+    1. [15]Expat Internals: A Simple Parse
+    2. [16]Expat Internals: The Hash Tables
+    3. [17]Expat Internals: String Pools
+    4. [18]Expat Internals: Parsing XML Declarations
+    5. [19]Expat Internals: Encodings
+    6. [20]Writing New Tests for Expat
+    7. [21]Writing A Custom Encoding
+
+External Articles and References
+
+     * [22]James Clark's original Expat page, for Expat 1.2 and earlier
+     * [23]Introductory article on using Expat on [24]xml.com
+
+   Compiled using [25]Pelican with theme [26]Chameleon on top of [27]
+   Bootstrap
+
+References
+
+   1. file://localhost/media/sda_/tmp/libexpat.github.io
+   2. https://github.com/libexpat/libexpat/blob/master/expat/Changes
+   3. https://github.com/libexpat/libexpat/releases
+   4. https://libexpat.github.io/doc/
+   5. https://github.com/libexpat/libexpat
+   6. https://libexpat.github.io/doc/users/
+   7. https://github.com/libexpat/libexpat/issues
+   8. file://localhost/media/sda_/tmp/libexpat.github.io/doc/
+   9. file://localhost/media/sda_/tmp/libexpat.github.io/doc/getting-started/
+  10. file://localhost/media/sda_/tmp/libexpat.github.io/doc/xml-security/
+  11. file://localhost/media/sda_/tmp/libexpat.github.io/doc/common-pitfalls/
+  12. file://localhost/media/sda_/tmp/libexpat.github.io/doc/packages/
+  13. file://localhost/media/sda_/tmp/libexpat.github.io/doc/users/
+  14. file://localhost/media/sda_/tmp/libexpat.github.io/doc/bindings/
+  15. file://localhost/media/sda_/tmp/libexpat.github.io/doc/expat-internals-a-simple-parse/
+  16. file://localhost/media/sda_/tmp/libexpat.github.io/doc/expat-internals-the-hash-tables/
+  17. file://localhost/media/sda_/tmp/libexpat.github.io/doc/expat-internals-string-pools/
+  18. file://localhost/media/sda_/tmp/libexpat.github.io/doc/expat-internals-parsing-xml-declarations/
+  19. file://localhost/media/sda_/tmp/libexpat.github.io/doc/expat-internals-encodings/
+  20. file://localhost/media/sda_/tmp/libexpat.github.io/doc/writing-new-tests-for-expat/
+  21. file://localhost/media/sda_/tmp/libexpat.github.io/doc/writing-a-custom-encoding/
+  22. http://www.jclark.com/xml/expat.html
+  23. http://www.xml.com/pub/1999/09/expat/index.html
+  24. http://www.xml.com/
+  25. https://docs.getpelican.com/
+  26. https://github.com/yuex/pelican-chameleon
+  27. https://getbootstrap.com/

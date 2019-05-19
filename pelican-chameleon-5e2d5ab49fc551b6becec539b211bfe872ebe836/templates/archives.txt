@@ -1,0 +1,28 @@
+   {% set name = 'Archives' %} {% set link = 'archives.html' %} {% extends
+   "base.html" %} {% block content %} {% if dates %} {# year list #}
+
+   {% for articles_group_by_year in dates|groupby('date.year')|reverse %}
+   {% set year = articles_group_by_year %} {% set parent =
+   ["Year",year.grouper]|join %}
+   {# year list heading #}
+   [1]{{ year.grouper }} [2]{{ year.list|count }}
+   {# end year list heading #} {# year list body #}
+   {# month list #}
+   {% for articles_group_by_month in
+   year.list|groupby('date.month')|reverse %} {% set month =
+   articles_group_by_month %} {% from 'macro.html' import
+   article_panel_list with context %} {% set id =
+   [parent,"Month",month.grouper]|join %} {% set title_left =
+   month.list[0].date|strftime('%B') %} {% set title_right =
+   month.list|count %} {% set entry_list = month.list %} {{
+   article_panel_list(parent,id,title_left,title_right,entry_list,show_dat
+   e=True) }} {% endfor %}
+   {# end month list #}
+   {# end year list body #}
+   {% endfor %}
+
+   {# end year list #} {% endif %} {% endblock %}
+
+References
+
+   2. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/archives.html#collapseYear{{ year.grouper }}

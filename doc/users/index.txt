@@ -1,0 +1,575 @@
+   (BUTTON) Toggle navigation [1]Expat XML parser
+     * [2]Changelog
+     * [3]Download
+     * [4]Documentation
+     * [5]Git Repository
+     * [6]Users
+     * [7]Report a Bug
+
+[8]Software using Expat
+
+     Please note, this website is work-in-progress.
+     Be encouraged to [9]join improving this website. Thank you!
+
+   NOTE: For [10]bindings and 3rd-party wrappers, please check the [11]
+   dedicated page.
+
+   To be included in this list, the related piece of software needs to be
+   [12]Open Source (so that users can study its use of Expat) and notable,
+   e.g. be packaged in multiple (unrelated) distributions of GNU/Linux.
+     * 0-9
+          + [13]4store
+     * A
+          + [14]AbiWord -- efficient, featureful word processor with
+            collaboration
+          + [15]ACOVEA
+          + [16]Advanced Strategic Command (asc)
+          + [17]AdvanceMAME
+          + [18]afflib
+          + [19]Aleph One
+          + [20]AmphetaDesk
+          + [21]Android / core-libart
+          + [22]Android Asset Packaging Tool (aapt)
+          + [23]Android Asset Packaging Tool (aapt2)
+          + [24]Android Studio
+          + [25]Apache httpd / mod_dav (prior to 2.0.12)
+          + [26]Apache httpd tools
+          + [27]Apache OpenOffice
+          + [28]Apache Portable Runtime (apr-util)
+          + [29]aria2
+          + [30]Astropy
+          + [31]Audacity
+          + [32]Avahi
+     * B
+          + [33]Battle Tanks
+          + [34]biboumi -- XMPP to IRC gateway
+          + [35]boinctui -- Fullscreen text mode manager for Boinc client
+          + [36]Bist -- chemical drawing tool
+     * C
+          + [37]cairo tool xml-to-trace (not cairo itself)
+          + [38]Calf Studio Gear
+          + [39]captagent -- HOMER SIP capture agent
+          + [40]CDuce -- programming language adapted to the manipulation
+            of XML data
+          + [41]CEGUI
+          + [42]CenterIM
+          + [43]Ceph / librgw -- Ceph RADOS Gateway client library
+          + [44]Chromium
+          + [45]Citadel -- groupware server
+          + [46]clamz -- command-line program to download MP3s from Amazon
+          + [47]claws-mail-feeds-reader -- feeds (RSS/Atom) reader plugin
+            for Claws Mail
+          + [48]CMake
+          + [49]cobex
+          + [50]Coin3D
+          + [51]Comet MS/MS search engine -- Tandem mass spectrometry
+            (MS/MS) search engine
+          + [52]C-Pluff -- Plug-in framework for C
+          + [53]CSVfix
+          + [54]CURL example code (not CURL itself)
+     * D
+          + [55]DACS (Distributed access control) -- single sign-on and
+            rule-based access control system
+          + [56]Dasher -- graphical predictive text input system
+          + [57]D-Bus
+          + [58]DFXML / tcpflow -- Digital Forensics XML project and
+            library
+          + [59]digiKam
+          + [60]discover -- hardware identification system
+          + [61]Dovecot SOLR plug-in
+          + [62]DRadio -- Danmarks Radio netradio, podcast, and TV player
+          + [63]drumgizmo -- audio sampler plugin and stand-alone app that
+            simulates a real drum kit
+     * E
+          + [64]EasySoap++
+          + [65]eegdev -- biosignal acquisition device library
+          + [66]ejabberd / erlang-p1-xml / fast_xml -- XML utilities for
+            Erlang
+          + [67]EKG2
+          + [68]Electron
+          + [69]ELinks
+          + [70]EMBOSS
+          + [71]ExactImage
+          + [72]Exempi
+          + [73]Exiv2
+          + [74]ExternData
+          + [75]ezQuake -- modern QuakeWorld client focused on competitive
+            online play
+     * F
+          + [76]Far-NetBox -- SFTP/SCP/FTP/FTPS/WebDAV client for [77]Far
+            Manager
+          + [78]FBReader
+          + [79]FlightGear -- Flight Gear Flight Simulator
+          + [80]Firefox
+          + [81]Fontconfig
+          + [82]fre:ac CDK / BoCA -- Free audio converter and CD ripper
+     * G
+          + [83]GANGI -- General Atomistic Modelling Graphic Interface
+          + [84]Ganglia
+          + [85]GCDM / gdcmexpat -- Grassroots DICOM library
+          + [86]GDAL
+          + [87]GDB
+          + [88]gdigi -- utility to control DigiTech effect pedals
+          + [89]Geant 4
+          + [90]GenomeTools -- versatile genome analysis toolkit
+          + [91]gettext
+          + [92]GIFTI / libgiftiio -- Geometry format under the
+            Neuroimaging Informatics Technology Initiative (NIfTI)
+          + [93]Git
+          + [94]Gnash
+          + [95]GNU Gatekeeper -- OpenH323 Gatekeeper (IP telephony
+            (VOIP), video conferencing)
+          + [96]GNU Image-Finding Tool (gift/gnuift) -- index and search
+            images by content
+          + [97]Godot
+          + [98]Goggles Music Manager
+          + [99]Google Earth Enterprise / libsgl
+          + [100]Gpick -- advanced GTK+ color picker
+          + [101]GPSBabel
+          + [102]gpx2shp -- convert GPS or GPX file to ESRI Shape file
+          + [103]graph-tool
+          + [104]Graphviz
+          + [105]Grive2
+          + [106]GXMame
+     * H
+          + [107]HHVM -- HipHop Virtual Machine, a JIT replacement for PHP
+          + [108]HTCondor -- distributed workload management system
+     * I
+          + [109]Ice
+          + [110]IFrIT (Ionization FRont Interactive Tool) -- powerful
+            tool for visualizing 3-dimensional data sets
+          + [111]ion -- NASA implementation of Delay-Tolerant Networking
+            (DTN)
+          + [112]Ipsumdump
+     * J
+          + [113]jabberd2
+          + [114]JACK Audio Connection Kit
+          + [115]jggtrans
+          + [116]Joe's Window Manager (JWM)
+     * K
+          + [117]K-3D
+          + [118]Kamailio XMPP gateway
+          + [119]Kodi
+          + [120]KomodoEdit
+          + [121]Kopete
+     * L
+          + [122]ladish -- session management system for JACK applications
+          + [123]LFTP
+          + [124]libarchive
+          + [125]libcutl
+          + [126]LibDOM / NetSurf
+          + [127]libgadu
+          + [128]libisds -- Czech Data Boxes access library
+          + [129]libkml
+          + [130]libmesode
+          + [131]libmetalink
+          + [132]libnih / nih-dbus-tool
+          + [133]LibOFA
+          + [134]libopkele -- OpenID support library in C++
+          + [135]libosmium -- C++ framework for working with OSM data
+            files
+          + [136]libprotobuf-mutator
+          + [137]LibreOffice
+          + [138]libstrophe
+          + [139]libsolv / libzypp
+          + [140]libsynthesis -- library for SyncML-DS (SyncML Data Sync)
+            clients
+          + [141]libwbxml
+          + [142]libwmf
+          + [143]libwww
+          + [144]libxspf
+          + [145]Liquid War 6
+          + [146]litmus
+          + [147]log4c -- C library for flexible logging
+     * M
+          + [148]Magics++ / libmagplus -- latest generation of the ECMWF's
+            Meteorological plotting software MAGICS
+          + [149]MakeMKV
+          + [150]mamory
+          + [151]MapServer
+          + [152]matchbox-keyboard -- on-screen 'virtual' or 'software'
+            keyboard, designed for touch-screen devices running X
+          + [153]matchbox-window-manager -- window manager for
+            resource-limited systems
+          + [154]matchbox-window-manager 2 -- window manager for
+            resource-limited systems
+          + [155]matita -- interactive theorem prover
+          + [156]MediaTomb
+          + [157]Memphis
+          + [158]Mesa 3D Graphics Library / libgbm
+          + [159]MIRA
+          + [160]mod_auth_openid -- OpenID authentication module for
+            Apache2
+          + [161]mod_dav
+          + [162]mstoolkit -- libraries for manipulating mass spectrometry
+            data
+          + [163]Music Player Daemon
+          + [164]mu-conference / jabber-muc
+     * N
+          + [165]neon
+          + [166]nginx-dav-ext-module
+          + [167]nrss -- ncurses-based RSS reader
+          + [168]NuSMV
+          + [169]NXLog Community Edition
+     * O
+          + [170]OGDI
+          + [171]openam -- H.323 answering machine
+          + [172]OpenCOLLADA
+          + [173]OpenSIPS (modules jabber and xmpp) -- very fast and
+            configurable SIP server
+          + [174]OpenVanilla (prior to version 0.7.1)
+          + [175]ophcrack -- Microsoft Windows password cracker using
+            rainbow tables
+          + [176]osm2pgrouting -- Tool to import OpenStreetMap data into a
+            pgRouting database
+          + [177]Osm2pgsql
+     * P
+          + [178]ParaView
+          + [179]POCO
+          + [180]Poedit
+          + [181]polkit
+          + [182]ptlib (Portable Tools Library)
+          + [183]PyPy
+          + [184]Python
+          + [185]pyxml
+     * Q
+          + [186]QGIS
+          + [187]QtWebEngine
+     * R
+          + [188]Raptor RDF Syntax Library (prior to version 2.0.7)
+          + [189]RATS
+          + [190]RawTherapee
+          + [191]readosm
+          + [192]Redland RDF Library
+          + [193]rfdump -- tool to decode RFID tag data
+          + [194]RNV
+     * S
+          + [195]s3backer
+          + [196]Sablotron
+          + [197]sblg
+          + [198]Scorched3D
+          + [199]SDLmame
+          + [200]SeaMonkey
+          + [201]simgear
+          + [202]Skia Graphics Library
+          + [203]Soulseek
+          + [204]spatialite-tools
+          + [205]Speed Dreams (uses modified Expat fork "txml")
+          + [206]Sphinx
+          + [207]Squid
+          + [208]StarDict
+          + [209]Stargazer
+          + [210]Subversion
+          + [211]Swift XMPP Client
+     * T
+          + [212]Tandem -- mass spectrometry software for protein
+            identification
+          + [213]TECkit
+          + [214]thin-provisioning-tools
+          + [215]Thunderbird
+          + [216]Tivoli Storage Manager
+          + [217]TORCS (uses modified Expat fork "txml")
+          + [218]TortoiseSVN -- Subversion client, implemented as a
+            Windows shell extension
+          + [219]Trusted QSL -- QSL log signing for the Logbook of the
+            World (LoTW)
+     * U
+          + [220]UDUNITS
+          + [221]uim
+          + [222]Unbound
+          + [223]urfkill -- wireless killswitch management daemon for
+            laptops
+          + [224]uWSGI
+     * V
+          + [225]vdr-rssreader
+          + [226]Viking
+          + [227]VirtualBox
+          + [228]VMD
+          + [229]VOMS -- Virtual Organization Membership Service
+          + [230]VOTCA
+          + [231]vstgui
+          + [232]Virtuoso Open-Source Edition -- high-performance
+            object-relational SQL database
+          + [233]VTK
+     * W
+          + [234]Wayland
+          + [235]WebKit / libwebrtc (prior to [236]this commit)
+          + [237]white_dune -- graphical VRML97/X3D viewer, editor, 3D
+            modeller and animation tool
+          + [238]WinMerge 2
+          + [239]WinSCP
+          + [240]WinSparkle
+          + [241]wvWare / libwv -- library which allows access to
+            Microsoft Word files
+          + [242]wxWidgets
+          + [243]wxSVG
+     * X
+          + [244]xkbd
+          + [245]XML Copy Editor -- fast, free, validating XML editor
+          + [246]xmlrpc-epi
+          + [247]XPilot NG -- Multi-player tactical game for X (NG
+            version)
+     * Y
+          + [248]Ymagine
+     * Z
+          + [249]Zebra / idzebra
+          + [250]ZeroC Ice
+
+   Compiled using [251]Pelican with theme [252]Chameleon on top of [253]
+   Bootstrap
+
+References
+
+   1. file://localhost/media/sda_/tmp/libexpat.github.io
+   2. https://github.com/libexpat/libexpat/blob/master/expat/Changes
+   3. https://github.com/libexpat/libexpat/releases
+   4. https://libexpat.github.io/doc/
+   5. https://github.com/libexpat/libexpat
+   6. https://libexpat.github.io/doc/users/
+   7. https://github.com/libexpat/libexpat/issues
+   8. file://localhost/media/sda_/tmp/libexpat.github.io/doc/users/
+   9. file://localhost/media/sda_/tmp/libexpat.github.io/doc/contribute-website/
+  10. file://localhost/media/sda_/tmp/libexpat.github.io/doc/bindings/
+  11. file://localhost/media/sda_/tmp/libexpat.github.io/doc/bindings/
+  12. https://opensource.org/osd-annotated
+  13. https://github.com/4store/4store
+  14. https://www.abisource.com/
+  15. https://github.com/Acovea/libacovea
+  16. http://www.asc-hq.org/
+  17. http://www.advancemame.it/
+  18. https://github.com/sshock/AFFLIBv3/
+  19. https://alephone.lhowon.org/
+  20. http://www.disobey.com/amphetadesk/
+  21. https://android.googlesource.com/platform/libcore/+/master/luni/src/main/java/org/apache/harmony/xml/ExpatParser.java
+  22. https://android.googlesource.com/platform/frameworks/base/+/master/tools/aapt/XMLNode.h
+  23. https://android.googlesource.com/platform/frameworks/base/+/master/tools/aapt2/xml/XmlDom.cpp
+  24. https://developer.android.com/studio/index.html
+  25. https://httpd.apache.org/
+  26. https://httpd.apache.org/
+  27. https://www.openoffice.org/
+  28. http://apr.apache.org/
+  29. https://aria2.github.io/
+  30. http://www.astropy.org/
+  31. http://web.audacityteam.org/
+  32. https://github.com/lathiat/avahi
+  33. http://btanks.sourceforge.net/
+  34. https://lab.louiz.org/louiz/biboumi/
+  35. https://github.com/suleman1971/boinctui
+  36. https://gna.org/projects/bist/
+  37. https://cgit.freedesktop.org/cairo/tree/util/xml-to-trace.c
+  38. http://calf-studio-gear.org/
+  39. http://sipcapture.org/
+  40. http://www.cduce.org/
+  41. http://cegui.org.uk/
+  42. http://www.centerim.org/index.php/Main_Page
+  43. https://github.com/ceph/ceph/blob/master/src/rgw/rgw_xml.cc
+  44. http://chromium.org/
+  45. http://www.citadel.org/doku.php
+  46. https://code.google.com/archive/p/clamz/
+  47. http://www.claws-mail.org/
+  48. https://cmake.org/
+  49. http://cobex.sourceforge.net/
+  50. https://bitbucket.org/Coin3D/coin/wiki/Home
+  51. https://sourceforge.net/projects/comet-ms/
+  52. http://www.c-pluff.org/
+  53. https://bitbucket.org/neilb/csvfix
+  54. https://github.com/curl/curl/blob/HEAD/docs/examples/xmlstream.c
+  55. https://dacs.dss.ca/
+  56. http://www.inference.org.uk/dasher/
+  57. https://www.freedesktop.org/wiki/Software/dbus/
+  58. https://github.com/simsong/dfxml/blob/master/src/dfxml_reader.cpp
+  59. https://www.digikam.org/
+  60. https://packages.debian.org/sid/discover
+  61. http://www.dovecot.org/
+  62. http://thrysoee.dk/dradio/
+  63. https://www.drumgizmo.org/wiki/
+  64. http://easysoap.sourceforge.net/
+  65. http://cnbi.epfl.ch/software/eegdev.html
+  66. https://github.com/processone/fast_xml
+  67. http://www.ekg2.org/
+  68. https://electron.atom.io/
+  69. http://elinks.or.cz/
+  70. http://emboss.sourceforge.net/
+  71. http://exactcode.com/opensource/exactimage/
+  72. https://libopenraw.freedesktop.org/wiki/Exempi/
+  73. http://www.exiv2.org/
+  74. https://github.com/modelica-3rdparty/ExternData
+  75. https://ezquake.github.io/
+  76. https://github.com/michaellukashov/Far-NetBox
+  77. http://farmanager.com/
+  78. https://fbreader.org/
+  79. https://sourceforge.net/p/flightgear/fgrun/
+  80. https://www.mozilla.org/en-US/firefox/
+  81. http://fontconfig.org/
+  82. https://github.com/enzo1982/BoCA/tree/master/components/playlist/xspf/expat
+  83. http://www.gamgi.org/
+  84. http://ganglia.sourceforge.net/
+  85. http://gdcm.sourceforge.net/
+  86. http://www.gdal.org/
+  87. https://sourceware.org/gdb/
+  88. http://desowin.org/gdigi/
+  89. http://geant4.cern.ch/
+  90. http://genometools.org/
+  91. https://www.gnu.org/software/gettext/
+  92. http://www.nitrc.org/projects/gifti
+  93. https://www.git-scm.com/
+  94. https://www.gnu.org/software/gnash/
+  95. https://www.gnugk.org/
+  96. https://www.gnu.org/software/gift/
+  97. https://godotengine.org/
+  98. https://gogglesmm.github.io/
+  99. https://github.com/google/earthenterprise/blob/HEAD/earth_enterprise/src/third_party/sgl/v0_8_6/src/SkXMLParser_expat.cpp
+ 100. http://www.gpick.org/
+ 101. http://www.gpsbabel.org/
+ 102. http://gpx2shp.osdn.jp/
+ 103. https://graph-tool.skewed.de/
+ 104. http://www.graphviz.org/
+ 105. https://github.com/vitalif/grive2
+ 106. http://gxmame.sourceforge.net/
+ 107. http://hhvm.com/
+ 108. http://research.cs.wisc.edu/htcondor/
+ 109. https://zeroc.com/products/ice
+ 110. https://sites.google.com/site/ifrithome/
+ 111. https://ion.ocp.ohiou.edu/
+ 112. http://read.seas.harvard.edu/~kohler/ipsumdump/
+ 113. http://jabberd2.org/
+ 114. http://jackaudio.org/
+ 115. https://github.com/Jajcus/jggtrans
+ 116. http://joewing.net/projects/jwm/
+ 117. http://www.k-3d.org/
+ 118. https://www.kamailio.org/w/
+ 119. https://kodi.tv/
+ 120. https://github.com/Komodo/KomodoEdit
+ 121. https://userbase.kde.org/Kopete
+ 122. http://ladish.org/
+ 123. http://lftp.tech/
+ 124. http://www.libarchive.org/
+ 125. http://www.codesynthesis.com/projects/libcutl/
+ 126. http://www.netsurf-browser.org/projects/libdom/
+ 127. http://libgadu.net/
+ 128. http://xpisar.wz.cz/libisds/
+ 129. https://github.com/google/libkml/blob/8609edf7c8d13ae2ddb6eac2bca7c8e49c67a5f8/src/kml/base/expat_parser.cc
+ 130. https://github.com/boothj5/libmesode
+ 131. https://launchpad.net/libmetalink
+ 132. https://launchpad.net/libnih
+ 133. https://code.google.com/p/musicip-libofa/
+ 134. http://kin.klever.net/libopkele/
+ 135. http://osmcode.org/libosmium/
+ 136. https://github.com/google/libprotobuf-mutator/blob/HEAD/examples/expat/expat_example.cc
+ 137. http://www.libreoffice.org/
+ 138. https://github.com/strophe/libstrophe
+ 139. http://doc.opensuse.org/projects/libzypp/HEAD/
+ 140. http://www.synthesis.ch/indefero/index.php/p/libsynthesis/
+ 141. https://github.com/libwbxml/libwbxml
+ 142. http://wvware.sourceforge.net/
+ 143. https://www.w3.org/Library/
+ 144. http://libspiff.sourceforge.net/
+ 145. https://www.gnu.org/software/liquidwar6/
+ 146. http://www.webdav.org/neon/litmus/
+ 147. http://log4c.sourceforge.net/
+ 148. https://software.ecmwf.int/wiki/display/MAGP/Magics
+ 149. http://www.makemkv.com/
+ 150. https://sourceforge.net/projects/mamory/
+ 151. http://mapserver.org/
+ 152. http://git.yoctoproject.org/cgit/cgit.cgi/matchbox-keyboard/
+ 153. http://git.yoctoproject.org/cgit/cgit.cgi/matchbox-window-manager/
+ 154. http://git.yoctoproject.org/cgit/cgit.cgi/matchbox-window-manager-2/
+ 155. http://matita.cs.unibo.it/
+ 156. http://www.mediatomb.cc/
+ 157. http://trac.openstreetmap.ch/trac/memphis/
+ 158. https://www.mesa3d.org/
+ 159. http://www.chevreux.org/projects_mira.html
+ 160. http://findingscience.com/mod_auth_openid/
+ 161. http://www.webdav.org/mod_dav/
+ 162. https://github.com/mhoopmann/mstoolkit/blob/master/src/mzParser/saxhandler.cpp
+ 163. https://www.musicpd.org/
+ 164. https://gna.org/projects/mu-conference/
+ 165. http://www.webdav.org/neon/
+ 166. https://github.com/arut/nginx-dav-ext-module
+ 167. http://www.codezen.org/nrss/
+ 168. http://nusmv.fbk.eu/
+ 169. https://nxlog.co/products/nxlog-community-edition
+ 170. http://ogdi.sourceforge.net/
+ 171. https://www.h323plus.org/
+ 172. http://www.opencollada.org/
+ 173. http://www.opensips.org/
+ 174. https://github.com/openvanilla/openvanilla/commit/bac11c8a818c53e020c903c6f32f220e5c48af91
+ 175. http://ophcrack.sourceforge.net/
+ 176. https://github.com/pgRouting/osm2pgrouting/blob/master/src/XMLParser.cpp
+ 177. http://wiki.openstreetmap.org/wiki/Osm2pgsql
+ 178. https://www.paraview.org/
+ 179. https://pocoproject.org/
+ 180. https://poedit.net/
+ 181. https://www.freedesktop.org/wiki/Software/polkit/
+ 182. http://www.opalvoip.org/
+ 183. http://pypy.org/
+ 184. https://www.python.org/
+ 185. http://pyxml.sourceforge.net/
+ 186. http://www.qgis.org/en/site/
+ 187. https://www.qt.io/
+ 188. http://librdf.org/raptor/
+ 189. https://code.google.com/p/rough-auditing-tool-for-security/
+ 190. http://www.rawtherapee.com/
+ 191. https://www.gaia-gis.it/spatialite
+ 192. http://librdf.org/
+ 193. http://www.rfdump.org/
+ 194. https://github.com/hartwork/rnv
+ 195. https://github.com/archiecobbs/s3backer
+ 196. https://sourceforge.net/projects/sablotron/
+ 197. https://kristaps.bsd.lv/sblg/
+ 198. http://www.scorched3d.co.uk/
+ 199. http://mamedev.org/
+ 200. http://www.seamonkey-project.org/
+ 201. http://simgear.org/
+ 202. https://github.com/google/skia/blob/HEAD/src/ports/SkFontMgr_android_parser.cpp
+ 203. http://www.soulseekqt.net/
+ 204. https://www.gaia-gis.it/spatialite
+ 205. http://www.speed-dreams.org/
+ 206. http://www.sphinxsearch.com/
+ 207. http://www.squid-cache.org/
+ 208. http://stardict-4.sourceforge.net/
+ 209. http://stg.dp.ua/
+ 210. http://subversion.apache.org/
+ 211. http://swift.im/
+ 212. http://www.thegpm.org/TANDEM/
+ 213. http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&cat_id=TECkit
+ 214. https://github.com/jthornber/thin-provisioning-tools
+ 215. https://www.mozilla.org/en-US/thunderbird/
+ 216. https://www.ibm.com/cloud-computing/products/devops/it-operations-management/
+ 217. http://torcs.sourceforge.net/
+ 218. https://tortoisesvn.net/
+ 219. http://sourceforge.net/projects/trustedqsl/
+ 220. https://www.unidata.ucar.edu/software/udunits/
+ 221. https://github.com/uim/uim/
+ 222. http://unbound.net/
+ 223. http://www.freedesktop.org/wiki/Software/urfkill
+ 224. http://projects.unbit.it/uwsgi/
+ 225. http://www.saunalahti.fi/~rahrenbe/vdr/rssreader/
+ 226. https://sourceforge.net/projects/viking/
+ 227. https://www.virtualbox.org/
+ 228. http://www.ks.uiuc.edu/Research/vmd/
+ 229. https://wiki.italiangrid.it/VOMS
+ 230. http://www.votca.org/
+ 231. https://github.com/steinbergmedia/vstgui
+ 232. http://vos.openlinksw.com/owiki/wiki/VOS/
+ 233. http://www.vtk.org/
+ 234. https://wayland.freedesktop.org/
+ 235. https://github.com/WebKit/webkit/blob/master/Source/ThirdParty/libwebrtc/Source/third_party/expat/files/lib
+ 236. https://github.com/WebKit/webkit/commit/7c6bc1c04c2c64c95f0adfcdc504d94c5beee927
+ 237. http://wdune.ourproject.org/
+ 238. http://winmerge.org/
+ 239. https://winscp.net/eng/index.php
+ 240. https://github.com/vslavik/winsparkle/tree/master/3rdparty
+ 241. http://www.abisource.com/projects/
+ 242. http://wxwidgets.org/
+ 243. http://wxsvg.sourceforge.net/
+ 244. http://trac.hackable1.org/trac/wiki/Xkbd
+ 245. http://xml-copy-editor.sourceforge.net/
+ 246. http://xmlrpc-epi.sourceforge.net/
+ 247. http://xpilot.sourceforge.net/
+ 248. https://github.com/yahoo/ygloo-ymagine/blob/HEAD/jni/src/graphics/xmp.c
+ 249. http://www.indexdata.com/zebra
+ 250. https://github.com/zeroc-ice/ice/blob/master/cpp/src/IceXML/Parser.cpp
+ 251. https://docs.getpelican.com/
+ 252. https://github.com/yuex/pelican-chameleon
+ 253. https://getbootstrap.com/

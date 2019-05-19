@@ -1,0 +1,48 @@
+   [1]Fork me on GitHub
+
+                              [2]Expat XML parser
+
+     * [3]Changelog
+     * [4]Download
+     * [5]Documentation
+     * [6]Git Repository
+     * [7]Users
+     * [8]Report a Bug
+     * [9]articles
+
+                       How to contribute to this website
+
+   This website is maintained using
+     * Markdown files for content
+     * [10]Pelican (and theme notmyidea) to generate HTML
+     * [11]pull requests against the [12]libexpat/libexpat.github.io
+       repository on GitHub
+
+   To render the website with your changes applied, running make should
+   just work.
+
+   If your contribution is about adding a new article, please:
+    1. Add a new file content/pages/UPCOMING-TITLE.md
+    2. Integrate links to that new aritcle at
+    3. the news listing at content/pages/news.md
+    4. the latest news section at the fron page content/pages/welcome.md
+
+   We are looking forward to your [13]pull request!
+
+   The Expat development team
+
+References
+
+   1. https://github.com/libexpat/libexpat
+   2. file://localhost/media/sda_/tmp/libexpat.github.io/
+   3. https://github.com/libexpat/libexpat/blob/master/expat/Changes
+   4. https://sourceforge.net/projects/expat/files/?source=navbar
+   5. https://libexpat.github.io/doc/
+   6. https://github.com/libexpat/libexpat
+   7. https://libexpat.github.io/doc/users/
+   8. https://github.com/libexpat/libexpat/issues
+   9. file://localhost/media/sda_/tmp/libexpat.github.io/category/articles.html
+  10. https://blog.getpelican.com/
+  11. https://github.com/libexpat/libexpat.github.io/pulls
+  12. https://github.com/libexpat/libexpat.github.io
+  13. https://github.com/libexpat/libexpat.github.io/pulls

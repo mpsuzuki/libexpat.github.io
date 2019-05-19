@@ -1,0 +1,3 @@
+   {% if PIWIK_URL and PIWIK_SITE_ID %}
+
+   {% endif %}

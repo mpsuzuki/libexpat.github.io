@@ -1,0 +1,191 @@
+   (BUTTON) Toggle navigation [1]Expat XML parser
+     * [2]Changelog
+     * [3]Download
+     * [4]Documentation
+     * [5]Git Repository
+     * [6]Users
+     * [7]Report a Bug
+
+[8]Expat Bindings & 3rd-party Wrappers
+
+   If you know of any additional resources which should be linked to from
+   this page, please [9]open a bug for this website or [10]provide a pull
+   request. We're especially interested in links open source interfaces to
+   Expat from languages other than C.
+     * Ada
+          + [11]xlq/ada-expat
+     * AppleScript
+          + [12]XML Tools 2 is an AppleScript scripting addition that
+            allows AppleScript applications to work with XML data; it is
+            based on Expat.
+     * BlitzMax
+          + [13]bah.mod/expat.mod
+     * C
+          + [14]expat-dom -- Easy-to-use DOM interface written in C
+          + The [15]Simple C Expat Wrapper is a wrapper around Expat that
+            provides a light-weight object model somewhat like a DOM.
+     * C++
+          + [16]ExpatMM -- C++ interface to Expat
+          + [17]C++ Wrappers for the Expat XML Parser, an article by Tim
+            Smith providing object-oriented wrappers for Expat. The
+            wrappers use some MFC-biased naming, but look interesting.
+          + [18]Arabica -- an XML Parser toolkit for C++ programmers, with
+            SAX2 implementations based on several parsers, including
+            Expat.
+          + [19]expatpp c++ layer for expat
+     * C#
+          + [20]SAXExpat.NET, a [21].NET wrapper for Expat, conforming to
+            the [22]SAX for .NET specifications.
+     * Eiffel
+          + The [23]GOBO project is working on an Eiffel binding for
+            Expat. Development is active and the package is fully
+            supported in GOBO 3.0 and 3.1, though there isn't much status
+            information about the Expat bindings on the website. (Most
+            activity is reportedly on the relevant mailing lists.)
+     * Erlang
+          + [24]fast_xml -- Fast Expat based Erlang XML parsing library
+     * Harbour
+          + [25]hbexpat
+     * Haskell
+          + [26]hexpat -- General purpose Haskell XML library using Expat
+            to do its parsing
+     * Julia
+          + [27]LibExpat.jl -- Julia interface to the Expat XML parser
+            library
+     * Lua
+          + [28]LuaExpat is a wrapper around Expat for the [29]Lua
+            programming language. The [30]LuaSOAP library is a [31]SOAP
+            implementation built on top of [32]LuaExpat.
+          + [33]luapower/expat -- expat Lua+ffi binding
+     * ML (Standard ML)
+          + [34]expat-sml -- Experimental Expat binding for Standard ML
+     * Nim
+          + [35]nim-lang/expat
+     * node.js
+          + [36]node-expat -- libexpat XML SAX parser binding for node.js
+          + [37]xml-stream
+     * Objective-C
+          + [38]Objective-C interface to Expat
+     * Object Pascal (Delphi)
+          + [39]SAX2 Wrapper for using Expat in Delphi, based on [40]"SAX
+            for Pascal" interface specs
+     * OCaml
+          + [41]whitequark/ocaml-expat
+          + [42]OCaml Expat is a wrapper around Expat for the [43]
+            Objective Caml language.
+     * Perl
+          + Perl's XML::Parser module is a wrapper built around a binding
+            to Expat in the XML::Parser::Expat module.
+          + [44]XML-Generator -- Perl extension for generating XML
+          + [45]XML-Parser -- Perl module for parsing XML documents
+          + [46]XML-SAX-ExpatXS -- Perl SAX 2 XS extension to Expat parser
+          + [47]XML-Twig -- Perl module for processing huge XML documents
+            in tree mode
+     * PHP
+          + [48]Article on using Expat from PHP on [49]<?PHPBuilder?>
+     * Python
+          + [50]Documentation for the Python interface to Expat, part of
+            the standard documentation for Python.
+          + [51]cElementTree
+     * R
+          + [52]rdyncall demo for Expat
+     * Ruby
+          + [53]Ruby interface to Expat
+          + [54]ffi-expat -- Very thin wrapper around expat using the Ruby
+            FFI library
+     * Rust
+          + [55]expat-sys CARGO package
+     * Simkin
+          + [56]Simkin is an open source scripting language available
+            under the GNU LGPL. It can be embedded in XML and supports a
+            DOM-like API backed by Expat.
+     * S-Lang
+          + [57]slang-expat / slexpat
+     * Smalltalk
+          + [58]libexpat-gst
+     * Swift
+          + [59]SwiftyExpat
+     * TCL
+          + The [60]TclXML project includes a [61]Tcl binding for Expat
+          + [62]tDOM is an alternate package providing XML support for
+            [63]Tcl, based in part on Expat.
+          + [64]XOTcl -- Extended Object Tcl
+     * Xojo
+          + [65]XMLReader class
+     * Vicare Scheme
+          + [66]vicare-expat -- Expat binding for Vicare Scheme
+
+   Compiled using [67]Pelican with theme [68]Chameleon on top of [69]
+   Bootstrap
+
+References
+
+   1. file://localhost/media/sda_/tmp/libexpat.github.io
+   2. https://github.com/libexpat/libexpat/blob/master/expat/Changes
+   3. https://github.com/libexpat/libexpat/releases
+   4. https://libexpat.github.io/doc/
+   5. https://github.com/libexpat/libexpat
+   6. https://libexpat.github.io/doc/users/
+   7. https://github.com/libexpat/libexpat/issues
+   8. file://localhost/media/sda_/tmp/libexpat.github.io/doc/bindings/
+   9. https://github.com/libexpat/libexpat.github.io/issues
+  10. https://github.com/libexpat/libexpat.github.io/pulls
+  11. https://github.com/xlq/ada-expat
+  12. http://www.latenightsw.com/freeware/XMLTools2/
+  13. https://github.com/maxmods/bah.mod/tree/master/expat.mod
+  14. https://github.com/kolotsey/expat-dom
+  15. http://www.nongnu.org/scew/
+  16. https://github.com/ckane/expatmm
+  17. http://www.codeproject.com/soap/expatimpl.asp
+  18. http://www.jezuk.co.uk/cgi-bin/view/arabica
+  19. https://sourceforge.net/projects/expatpp/
+  20. http://saxdotnet.sourceforge.net/saxexpat.html
+  21. http://www.microsoft.com/net/
+  22. http://saxdotnet.sourceforge.net/
+  23. http://sourceforge.net/projects/gobo-eiffel/
+  24. https://github.com/processone/fast_xml
+  25. https://github.com/harbour/core/tree/master/contrib/hbexpat/3rd/expat
+  26. https://hackage.haskell.org/package/hexpat
+  27. https://github.com/JuliaIO/LibExpat.jl
+  28. https://github.com/LuaDist/luaexpat
+  29. http://www.lua.org/
+  30. http://www.keplerproject.org/luasoap/
+  31. http://xml.coverpages.org/soap.html
+  32. http://www.keplerproject.org/luaexpat/
+  33. https://github.com/luapower/expat
+  34. http://www.enyo.de/fw/notes/sml-expat.html
+  35. https://github.com/nim-lang/expat
+  36. https://github.com/astro/node-expat
+  37. https://github.com/assistunion/xml-stream
+  38. http://expatobjc.sourceforge.net/
+  39. http://sourceforge.net/projects/kdsxml
+  40. http://saxforpascal.sourceforge.net/
+  41. https://github.com/whitequark/ocaml-expat
+  42. http://www.xs4all.nl/~mmzeeman/ocaml/
+  43. http://www.ocaml.org/
+  44. http://search.cpan.org/dist/XML-Generator/
+  45. http://search.cpan.org/dist/XML-Parser/
+  46. http://search.cpan.org/dist/XML-SAX-ExpatXS/
+  47. http://search.cpan.org/dist/XML-Twig/
+  48. http://www.phpbuilder.com/columns/justin20000428.php3
+  49. http://www.phpbuilder.com/
+  50. http://www.python.org/doc/current/lib/module-xml.parsers.expat.html
+  51. http://effbot.org/zone/celementtree.htm
+  52. https://rdrr.io/rforge/rdyncall/src/demo/expat.R
+  53. http://www.yoshidam.net/Ruby.html#xmlparser
+  54. https://rubygems.org/gems/ffi-expat/
+  55. https://crates.io/crates/expat-sys/versions
+  56. http://www.simkin.co.uk/
+  57. http://www.cheesit.com/downloads/slang/slexpat.html
+  58. https://packages.debian.org/sid/libexpat-gst
+  59. https://github.com/AlwaysRightInstitute/SwiftyExpat
+  60. http://tclxml.sourceforge.net/
+  61. http://tcl.activestate.com/
+  62. http://www.tdom.org/
+  63. http://tcl.activestate.com/
+  64. http://media.wu.ac.at/
+  65. http://docs.xojo.com/index.php/XMLReader
+  66. https://github.com/marcomaggi/vicare-expat
+  67. https://docs.getpelican.com/
+  68. https://github.com/yuex/pelican-chameleon
+  69. https://getbootstrap.com/

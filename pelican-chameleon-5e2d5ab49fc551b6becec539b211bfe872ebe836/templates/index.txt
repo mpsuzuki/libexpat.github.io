@@ -1,0 +1,37 @@
+   {% set name = '' %} {% set link = '' %} {% extends "base.html" %} {%
+   block content %} {% from 'macro.html' import genurl with context %} {%
+   if articles %} {% if articles_page %} {% set articles =
+   articles_page.object_list %} {% endif %}
+
+   {% for article in articles %}
+   {% set year = article.date|strftime('%Y') %} {% set month =
+   article.date|strftime('%B') %} {% set month_index =
+   article.date|strftime('%m') %} [1]{{ year }} {{- ' - ' -}} [2]{{ month
+   }} [3]#{{ dates|count - (articles_page.number-1)*DEFAULT_PAGINATION -
+   loop.index0 }}
+   {% set article_url = genurl( article.url, force=True ) %}
+     * {{- article.title -}}
+     * {% from 'macro.html' import article_info with context %} {{
+       article_info(article) }} {% if article.summary %}
+     * {{- article.summary -}} {% endif %}
+     *
+
+   {% endfor %}
+
+   {% endif %} {% endblock content %} {% block pagefooter %} {% from
+   'macro.html' import pagination with context %} {{ pagination() }} {%
+   endblock %}
+
+References
+
+   Visible links
+   1. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20'/archives.html#Year' + year ) }}
+   2. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20genurl(%20'/archives.html#Year' + year + 'Month' + month_index ) }}
+   3. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/index.html#collapseArticle{{ loop.index }}
+
+   Hidden links:
+   5. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20article_url%20}}
+   6. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20article_url%20}}
+   7. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20article_url%20+
+   8. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20article_url%20}}
+   9. file://localhost/media/sda_/tmp/libexpat.github.io/pelican-chameleon-5e2d5ab49fc551b6becec539b211bfe872ebe836/templates/{{%20article_url%20}}
