@@ -126,7 +126,7 @@ typedef struct {
 +---------------------------...-+
    ^               ^      ^       ^
    |         start-+      +-ptr   +-end
-   + blocks-&gt;s
+   + blocks->s
 
    Finally, mem is a pointer to the parser's suite of memory allocation
    functions. This allows us to use alternative allocation functions, for
@@ -154,14 +154,14 @@ poolGrow(STRING_POOL *pool)
    full, i.e. when pool->ptr == pool->end. This isn't an absolute
    requirement, but a good deal of the following code makes more sense
    when you bear that in mind.
-  if (pool-&gt;freeBlocks) {
-    if (pool-&gt;start == 0) {
-      pool-&gt;blocks = pool-&gt;freeBlocks;
-      pool-&gt;freeBlocks = pool-&gt;freeBlocks-&gt;next;
-      pool-&gt;blocks-&gt;next = NULL;
-      pool-&gt;start = pool-&gt;blocks-&gt;s;
-      pool-&gt;end = pool-&gt;start + pool-&gt;blocks-&gt;size;
-      pool-&gt;ptr = pool-&gt;start;
+  if (pool->freeBlocks) {
+    if (pool->start == 0) {
+      pool->blocks = pool->freeBlocks;
+      pool->freeBlocks = pool->freeBlocks->next;
+      pool->blocks->next = NULL;
+      pool->start = pool->blocks->s;
+      pool->end = pool->start + pool->blocks->size;
+      pool->ptr = pool->start;
       return XML_TRUE;
     }
 
@@ -177,16 +177,16 @@ poolGrow(STRING_POOL *pool)
    block), end (calculated from the number of characters available) and
    ptr (same as start, obviously). Since this is all trivially successful,
    the function just returns success at this point.
-    if (pool-&gt;end - pool-&gt;start &lt; pool-&gt;freeBlocks-&gt;size) {
-      BLOCK *tem = pool-&gt;freeBlocks-&gt;next;
-      pool-&gt;freeBlocks-&gt;next = pool-&gt;blocks;
-      pool-&gt;blocks = pool-&gt;freeBlocks;
-      pool-&gt;freeBlocks = tem;
-      memcpy(pool-&gt;blocks-&gt;s, pool-&gt;start,
-             (pool-&gt;end - pool-&gt;start) * sizeof(XML_Char));
-      pool-&gt;ptr = pool-&gt;blocks-&gt;s + (pool-&gt;ptr - pool-&gt;start);
-      pool-&gt;start = pool-&gt;blocks-&gt;s;
-      pool-&gt;end = pool-&gt;start + pool-&gt;blocks-&gt;size;
+    if (pool->end - pool->start < pool->freeBlocks->size) {
+      BLOCK *tem = pool->freeBlocks->next;
+      pool->freeBlocks->next = pool->blocks;
+      pool->blocks = pool->freeBlocks;
+      pool->freeBlocks = tem;
+      memcpy(pool->blocks->s, pool->start,
+             (pool->end - pool->start) * sizeof(XML_Char));
+      pool->ptr = pool->blocks->s + (pool->ptr - pool->start);
+      pool->start = pool->blocks->s;
+      pool->end = pool->start + pool->blocks->size;
       return XML_TRUE;
     }
   }
@@ -207,7 +207,7 @@ poolGrow(STRING_POOL *pool)
 | [other contents] 0 . . . . . |
 +-...--------------------------+
   ^                  ^           ^
-  + blocks-&gt;s        + ptr       + end
+  + blocks->s        + ptr       + end
                      + start
 
    The characters get added to the pool one at a time until the pool is
@@ -216,7 +216,7 @@ poolGrow(STRING_POOL *pool)
 | [other contents] 0 'A' 'B' 'C' 'D' 'E' |
 +-...------------------------------------+
   ^                   ^                    ^
-  + block-&gt;s          + start              + end
+  + block->s          + start              + end
                                            + ptr
 
    and this is the point at which poolGrow() gets called.
@@ -244,7 +244,7 @@ poolGrow(STRING_POOL *pool)
 +--------------------------...-+
    ^                  ^          ^
    + start            + ptr      + end
-   + block-&gt;s
+   + block->s
 
    Again we are done, so we just return success. The calling code will
    have space for at least one more character before it overflows the
@@ -258,7 +258,7 @@ poolGrow(STRING_POOL *pool)
    cost of searching the list and unlinking the block starts to outweigh
    the cost of going to the allocation functions, so we don't. Clearly we
    will have to allocate more memory one way or another.
-  if (pool-&gt;blocks &amp;&amp; pool-&gt;start == pool-&gt;blocks-&gt;s) {
+  if (pool->blocks && pool->start == pool->blocks->s) {
 
    This condition is true if we have a current block (not true when the
    pool is first initialised, for example) and the start pointer is at the
@@ -272,10 +272,10 @@ poolGrow(STRING_POOL *pool)
    the memory; even if it moves the block, there are no stray pointers
    that can be confused.
     BLOCK *temp;
-    int blockSize = (int)((unsigned)(pool-&gt;end - pool-&gt;start)*2U);
+    int blockSize = (int)((unsigned)(pool->end - pool->start)*2U);
     size_t bytesToAllocate;
 
-    if (blockSize &lt; 0)
+    if (blockSize < 0)
       return XML_FALSE;
 
     bytesToAllocate = poolBytesToAllocateFor(blockSize);
@@ -283,14 +283,14 @@ poolGrow(STRING_POOL *pool)
       return XML_FALSE;
 
     temp = (BLOCK *)
-      pool-&gt;mem-&gt;realloc_fcn(pool-&gt;blocks, (unsigned)bytesToAllocate);
+      pool->mem->realloc_fcn(pool->blocks, (unsigned)bytesToAllocate);
     if (temp == NULL)
       return XML_FALSE;
-    pool-&gt;blocks = temp;
-    pool-&gt;blocks-&gt;size = blockSize;
-    pool-&gt;ptr = pool-&gt;blocks-&gt;s + (pool-&gt;ptr - pool-&gt;start);
-    pool-&gt;start = pool-&gt;blocks-&gt;s;
-    pool-&gt;end = pool-&gt;start + blockSize;
+    pool->blocks = temp;
+    pool->blocks->size = blockSize;
+    pool->ptr = pool->blocks->s + (pool->ptr - pool->start);
+    pool->start = pool->blocks->s;
+    pool->end = pool->start + blockSize;
   }
 
    The calculation of the new size of the block is not quite as
@@ -313,17 +313,17 @@ poolGrow(STRING_POOL *pool)
    copy the unfinished string (since realloc() does that for us).
 else {
   BLOCK *tem;
-  int blockSize = (int)(pool-&gt;end - pool-&gt;start);
+  int blockSize = (int)(pool->end - pool->start);
   size_t bytesToAllocate;
 
-  if (blockSize &lt; 0)
+  if (blockSize < 0)
     return XML_FALSE;
 
-  if (blockSize &lt; INIT_BLOCK_SIZE)
+  if (blockSize < INIT_BLOCK_SIZE)
     blockSize = INIT_BLOCK_SIZE;
   else {
     /* Detect overflow, avoiding _signed_ overflow undefined behavior */
-    if ((int)((unsigned)blockSize * 2U) &lt; 0) {
+    if ((int)((unsigned)blockSize * 2U) < 0) {
       return XML_FALSE;
     }
     blockSize *= 2;
@@ -349,18 +349,18 @@ else {
    We wish to avoid calling the allocation functions more often than we
    have to, and this exponential growth strategy is a good compromise
    between wasting memory and wasting time.
-    tem = (BLOCK *)pool-&gt;mem-&gt;malloc_fcn(bytesToAllocate);
+    tem = (BLOCK *)pool->mem->malloc_fcn(bytesToAllocate);
     if (!tem)
       return XML_FALSE;
-    tem-&gt;size = blockSize;
-    tem-&gt;next = pool-&gt;blocks;
-    pool-&gt;blocks = tem;
-    if (pool-&gt;ptr != pool-&gt;start)
-      memcpy(tem-&gt;s, pool-&gt;start,
-             (pool-&gt;ptr - pool-&gt;start) * sizeof(XML_Char));
-    pool-&gt;ptr = tem-&gt;s + (pool-&gt;ptr - pool-&gt;start);
-    pool-&gt;start = tem-&gt;s;
-    pool-&gt;end = tem-&gt;s + blockSize;
+    tem->size = blockSize;
+    tem->next = pool->blocks;
+    pool->blocks = tem;
+    if (pool->ptr != pool->start)
+      memcpy(tem->s, pool->start,
+             (pool->ptr - pool->start) * sizeof(XML_Char));
+    pool->ptr = tem->s + (pool->ptr - pool->start);
+    pool->start = tem->s;
+    pool->end = tem->s + blockSize;
   }
   return XML_TRUE;
 }
@@ -382,18 +382,18 @@ Building Strings From XML_Chars
    simplest is to build it character by character using the
    poolAppendChar() macro.
 #define poolAppendChar(pool, c) \
-  (((pool)-&gt;ptr == (pool)-&gt;end &amp;&amp; !poolGrow(pool)) \
+  (((pool)->ptr == (pool)->end && !poolGrow(pool)) \
   ? 0 \
-  : ((*((pool)-&gt;ptr)++ = c), 1))
+  : ((*((pool)->ptr)++ = c), 1))
 
    This is a macro for efficiency reasons (it is used frequently), and as
    such can be confusing to read. It's easiest to describe as if it were a
    function returning a boolean:
 static int poolAppendChar(STRING_POOL *pool, XML_Char c)
 {
-  if (pool-&gt;ptr == pool-&gt;end &amp;&amp; !poolGrow(pool))
+  if (pool->ptr == pool->end && !poolGrow(pool))
     return 0;
-  *(pool-&gt;ptr)++ = c;
+  *(pool->ptr)++ = c;
   return 1;
 }
 
@@ -450,7 +450,7 @@ poolCopyString(STRING_POOL *pool, const XML_Char *s)
     if (!poolAppendChar(pool, *s))
       return NULL;
   } while (*s++);
-  s = pool-&gt;start;
+  s = pool->start;
   poolFinish(pool);
   return s;
 }
@@ -484,10 +484,10 @@ printf("string = %s\n", buffer);
 
 STRING_POOL pool;
 XML_Char *string;
-poolInit(&amp;pool);
-poolAppendString(&amp;pool, "ABC");
-poolAppendString(&amp;pool, "DEF");
-string = poolCopyString(&amp;pool, "GHI");
+poolInit(&pool);
+poolAppendString(&pool, "ABC");
+poolAppendString(&pool, "DEF");
+string = poolCopyString(&pool, "GHI");
 printf("string = %s\n", string);
 
 Building Strings From Chars
@@ -502,7 +502,7 @@ static XML_Char *
 poolAppend(STRING_POOL *pool, const ENCODING *enc,
            const char *ptr, const char *end)
 {
-  if (!pool-&gt;ptr &amp;&amp; !poolGrow(pool))
+  if (!pool->ptr && !poolGrow(pool))
     return NULL;
 
    First we check to see if we have a current block at all (i.e. if
@@ -510,9 +510,9 @@ poolAppend(STRING_POOL *pool, const ENCODING *enc,
    one.
   for (;;) {
     const enum XML_Convert_Result convert_res =
-      XmlConvert(enc, &amp;ptr, end,
-                 (ICHAR **)&amp;(pool-&gt;ptr),
-                 (ICHAR *)pool-&gt;end);
+      XmlConvert(enc, &ptr, end,
+                 (ICHAR **)&(pool->ptr),
+                 (ICHAR *)pool->end);
 
     if ((convert_res == XML_CONVERT_COMPLETED) ||
         (convert_res == XML_CONVERT_INPUT_INCOMPLETE))
@@ -547,7 +547,7 @@ poolAppend(STRING_POOL *pool, const ENCODING *enc,
    nothing more we can usefully do. Otherwise we must have run out of
    output buffer, so we call poolGrow() to get ourselves some more and
    loop back to try again.
-  return pool-&gt;start;
+  return pool->start;
 }
 
    By the time we break out of the loop, the ptr field will have been
@@ -574,13 +574,13 @@ How And Why String Pools Are Used
    The temporary pools are almost exclusively used in a simple manner that
    preserves the strings for a relatively short period. The processing of
    XML_TOK_EMPTY_ELEMENT_WITH_ATTS is a good example of this.
-name.str = poolStoreString(&amp;tempPool, enc, rawName,
+name.str = poolStoreString(&tempPool, enc, rawName,
                            rawName + XmlNameLength(enc, rawName));
 if (!name.str)
   return XML_ERROR_NO_MEMORY;
-poolFinish(&amp;tempPool);
+poolFinish(&tempPool);
 /* ... do stuff ... */
-poolClear(&amp;tempPool);
+poolClear(&tempPool);
 
    The code makes a working copy of the tag name using poolStoreString(),
    which you'll recall does not finish the string so it has to do that for
@@ -605,13 +605,13 @@ poolClear(&amp;tempPool);
    converting the input stream, purely to get a temporary
    internally-encoded string. For example, substituting an entity
    reference involves the following code:
-name = poolStoreString(&amp;dtd-&gt;pool, enc,
-                        s + enc-&gt;minBytesPerChar,
-                        next - enc-&gt;minBytesPerChar);
+name = poolStoreString(&dtd->pool, enc,
+                        s + enc->minBytesPerChar,
+                        next - enc->minBytesPerChar);
 if (!name)
   return XML_ERROR_NO_MEMORY;
-entity = (ENTITY *)lookup(parser, &amp;dtd-&gt;generalEntities, name, 0);
-poolDiscard(&amp;dtd-&gt;pool);
+entity = (ENTITY *)lookup(parser, &dtd->generalEntities, name, 0);
+poolDiscard(&dtd->pool);
 
    Again poolStoreString() is used to get an "unfinished" string converted
    from the input stream to internal encoding, which is used to lookup
@@ -622,21 +622,21 @@ poolDiscard(&amp;dtd-&gt;pool);
    lifetime of the parse, at least) of converted input strings, when it is
    needed. A reasonably self-contained example occurs at the start of
    getAttributeId(), though with a twist:
-if (!poolAppendChar(&amp;dtd-&gt;pool, XML_T('\0')))
+if (!poolAppendChar(&dtd->pool, XML_T('\0')))
   return NULL;
-name = poolStoreString(&amp;dtd-&gt;pool, enc, start, end);
+name = poolStoreString(&dtd->pool, enc, start, end);
 if (!name)
   return NULL;
 /* skip quotation mark - its storage will be re-used (like in name[-1]) */
 ++name;
-id = (ATTRIBUTE_ID *)lookup(parser, &amp;dtd-&gt;attributeIds, name, sizeof(ATTR
-IBUTE_ID));
+id = (ATTRIBUTE_ID *)lookup(parser, &dtd->attributeIds, name, sizeof(ATTRIBUTE_I
+D));
 if (!id)
   return NULL;
-if (id-&gt;name != name)
-  poolDiscard(&amp;dtd-&gt;pool);
+if (id->name != name)
+  poolDiscard(&dtd->pool);
 else {
-  poolFinish(&amp;dtd-&gt;pool);
+  poolFinish(&dtd->pool);
 
    The twist I mentioned is the first poolAppendChar(). The code
    cunningly^[17]3 inserts a spare XML_Char at the start of an attribute

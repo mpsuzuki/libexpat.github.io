@@ -79,7 +79,7 @@ static NAMED *
 lookup(XML_Parser parser, HASH_TABLE *table, KEY name, size_t createSize)
 {
   size_t i;
-  if (table-&gt;size == 0) {
+  if (table->size == 0) {
     size_t tsize;
     if (!createSize)
       return NULL;
@@ -93,16 +93,16 @@ lookup(XML_Parser parser, HASH_TABLE *table, KEY name, size_t createSize)
    asked to create a new entry, i.e. whether createSize is non-zero. If we
    were just trying to look something up in an empty table, we would
    return NULL at this point.
-    table-&gt;power = INIT_POWER;
-    /* table-&gt;size is a power of 2 */
-    table-&gt;size = (size_t)1 &lt;&lt; INIT_POWER;
-    tsize = table-&gt;size * sizeof(NAMED *);
-    table-&gt;v = (NAMED **)table-&gt;mem-&gt;malloc_fcn(tsize);
-    if (!table-&gt;v) {
-      table-&gt;size = 0;
+    table->power = INIT_POWER;
+    /* table->size is a power of 2 */
+    table->size = (size_t)1 << INIT_POWER;
+    tsize = table->size * sizeof(NAMED *);
+    table->v = (NAMED **)table->mem->malloc_fcn(tsize);
+    if (!table->v) {
+      table->size = 0;
       return NULL;
     }
-    memset(table-&gt;v, 0, tsize);
+    memset(table->v, 0, tsize);
 
    Having decided we need a new table, we create it. As the comment in the
    code says, our table size is always a power of two for general
@@ -117,7 +117,7 @@ lookup(XML_Parser parser, HASH_TABLE *table, KEY name, size_t createSize)
    using the memory allocation functions held in the table, tidying up and
    returning NULL if we failed. This new memory is set to all zero, giving
    us a table of NULL pointers.
-    i = hash(parser, name) &amp; ((unsigned long)table-&gt;size - 1);
+    i = hash(parser, name) & ((unsigned long)table->size - 1);
   }
 
    Our last act when creating a new table is to pass the key "foo" to the
@@ -128,13 +128,13 @@ lookup(XML_Parser parser, HASH_TABLE *table, KEY name, size_t createSize)
    size a power of two (2^n-1 will always have the least significant n
    bits set to one and the rest zeroes, e.g. 2^6-1 is 0b111111 (63)). The
    resulting index i is the table entry we will pick.
-  table-&gt;v[i] = (NAMED *)table-&gt;mem-&gt;malloc_fcn(createSize);
-  if (!table-&gt;v[i])
+  table->v[i] = (NAMED *)table->mem->malloc_fcn(createSize);
+  if (!table->v[i])
     return NULL;
-  memset(table-&gt;v[i], 0, createSize);
-  table-&gt;v[i]-&gt;name = name;
-  (table-&gt;used)++;
-  return table-&gt;v[i];
+  memset(table->v[i], 0, createSize);
+  table->v[i]->name = name;
+  (table->used)++;
+  return table->v[i];
 }
 
    Finally we create the entry, allocating the requested number of bytes
@@ -176,20 +176,20 @@ static NAMED *
 lookup(XML_Parser parser, HASH_TABLE *table, KEY name, size_t createSize)
 {
   size_t i;
-  if (table-&gt;size == 0) {
+  if (table->size == 0) {
     /* ... */
   }
   else {
     unsigned long h = hash(parser, name);
-    unsigned long mask = (unsigned long)table-&gt;size - 1;
+    unsigned long mask = (unsigned long)table->size - 1;
     unsigned char step = 0;
-    i = h &amp; mask;
-    while (table-&gt;v[i]) {
-      if (keyeq(name, table-&gt;v[i]-&gt;name))
-        return table-&gt;v[i];
+    i = h & mask;
+    while (table->v[i]) {
+      if (keyeq(name, table->v[i]->name))
+        return table->v[i];
       if (!step)
-        step = PROBE_STEP(h, mask, table-&gt;power);
-      i &lt; step ? (i += table-&gt;size - step) : (i -= step);
+        step = PROBE_STEP(h, mask, table->power);
+      i < step ? (i += table->size - step) : (i -= step);
     }
     if (!createSize)
       return NULL;
@@ -211,7 +211,7 @@ lookup(XML_Parser parser, HASH_TABLE *table, KEY name, size_t createSize)
 
    The PROBE_STEP macro is defined as follows:
 #define SECOND_HASH(hash, mask, power) \
-  ((((hash) &amp; ~(mask)) &gt;&gt; ((power) - 1)) &amp; ((mask) &gt;&gt; 2))
+  ((((hash) & ~(mask)) >> ((power) - 1)) & ((mask) >> 2))
 #define PROBE_STEP(hash, mask, power) \
   ((unsigned char)((SECOND_HASH(hash, mask, power)) | 1))
 
@@ -232,12 +232,12 @@ lookup(XML_Parser parser, HASH_TABLE *table, KEY name, size_t createSize)
 Extending the Table
 
     /* check for overflow (table is half full) */
-    if (table-&gt;used &gt;&gt; (table-&gt;power - 1)) {
-      unsigned char newPower = table-&gt;power + 1;
-      size_t newSize = (size_t)1 &lt;&lt; newPower;
+    if (table->used >> (table->power - 1)) {
+      unsigned char newPower = table->power + 1;
+      size_t newSize = (size_t)1 << newPower;
       unsigned long newMask = (unsigned long)newSize - 1;
       size_t tsize = newSize * sizeof(NAMED *);
-      NAMED **newV = (NAMED **)table-&gt;mem-&gt;malloc_fcn(tsize);
+      NAMED **newV = (NAMED **)table->mem->malloc_fcn(tsize);
       if (!newV)
         return NULL;
       memset(newV, 0, tsize);
@@ -257,22 +257,22 @@ Extending the Table
    don't want to do it too often during a parse! Ensuring the table size
    is always a power of two gives us exponential growth, which helps keep
    the number of expansions down.
-      for (i = 0; i &lt; table-&gt;size; i++)
-        if (table-&gt;v[i]) {
-          unsigned long newHash = hash(parser, table-&gt;v[i]-&gt;name);
-          size_t j = newHash &amp; newMask;
+      for (i = 0; i < table->size; i++)
+        if (table->v[i]) {
+          unsigned long newHash = hash(parser, table->v[i]->name);
+          size_t j = newHash & newMask;
           step = 0;
           while (newV[j]) {
             if (!step)
              step = PROBE_STEP(newHash, newMask, newPower);
-            j &lt; step ? (j += newSize - step) : (j -= step);
+            j < step ? (j += newSize - step) : (j -= step);
           }
-          newV[j] = table-&gt;v[i];
+          newV[j] = table->v[i];
         }
-      table-&gt;mem-&gt;free_fcn(table-&gt;v);
-      table-&gt;v = newV;
-      table-&gt;power = newPower;
-      table-&gt;size = newSize;
+      table->mem->free_fcn(table->v);
+      table->v = newV;
+      table->power = newPower;
+      table->size = newSize;
 
    This looks almost exactly like the hash-mask-and-step routine we just
    saw, mostly because it is exactly the same routine. It may result in
@@ -284,12 +284,12 @@ Extending the Table
    relevant fields of the main HASH_TABLE structure. At this point we have
    a consistent hash table again, but we haven't yet inserted our new
    entry.
-      i = h &amp; newMask;
+      i = h & newMask;
       step = 0;
-      while (table-&gt;v[i]) {
+      while (table->v[i]) {
         if (!step)
           step = PROBE_STEP(h, newMask, newPower);
-        i &lt; step ? (i += newSize - step) : (i -= step);
+        i < step ? (i += newSize - step) : (i -= step);
       }
 
    One more time around the hash-mask-and-step routine, this time using
@@ -321,8 +321,8 @@ typedef struct {
 static void FASTCALL
 hashTableIterInit(HASH_TABLE_ITER *iter, const HASH_TABLE *table)
 {
-  iter-&gt;p = table-&gt;v;
-  iter-&gt;end = iter-&gt;p + table-&gt;size;
+  iter->p = table->v;
+  iter->end = iter->p + table->size;
 }
 
    You initialise an iterator by setting its current pointer to the start
@@ -330,8 +330,8 @@ hashTableIterInit(HASH_TABLE_ITER *iter, const HASH_TABLE *table)
 static NAMED * FASTCALL
 hashTableIterNext(HASH_TABLE_ITER *iter)
 {
-  while (iter-&gt;p != iter-&gt;end) {
-    NAMED *tem = *(iter-&gt;p)++;
+  while (iter->p != iter->end) {
+    NAMED *tem = *(iter->p)++;
     if (tem)
       return tem;
   }
@@ -345,9 +345,9 @@ hashTableIterNext(HASH_TABLE_ITER *iter)
 
    The code to run through a hash table is then just:
 HASH_TABLE_ITER foo_iter;
-hashTableIterInit(&amp;foo_iter, &amp;foo_table);
+hashTableIterInit(&foo_iter, &foo_table);
 for (;;) {
-  FOO_ENTRY *foo = (FOO_ENTRY *)hashTableIterNext(&amp;foo_iter);
+  FOO_ENTRY *foo = (FOO_ENTRY *)hashTableIterNext(&foo_iter);
   if (!foo)
     break;
   do_something_with(foo);
@@ -392,12 +392,11 @@ Footnotes
    power is 6 (and mask is therefore 0b111111), and suppose that our hash
    is 0b1111111111111111 to make the masking stand out (and because I
    can't be bothered to type more than 16 bits). Therefore:
-hash &amp; ~mask                                = 0b1111111111000000
+hash & ~mask                                = 0b1111111111000000
 
-(hash &amp; ~mask) &gt;&gt; (power-1)                 = 0b0000011111111110
+(hash & ~mask) >> (power-1)                 = 0b0000011111111110
 
-((hash &amp; ~mask) &gt;&gt; (power-1)) &amp; (mask &gt;&gt; 2) = 0b000000000000
-1110
+((hash & ~mask) >> (power-1)) & (mask >> 2) = 0b0000000000001110
 
    So we use the next three (power-3) bits of the hash, shifted left one
    bit. The least significant bit will then be set to one by PROBE_STEP(),

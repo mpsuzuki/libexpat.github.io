@@ -179,7 +179,7 @@ Dummy Handlers
    For example:
 START_TEST(check_start_elt_handler)
 {
-    const char *text = "&lt;doc&gt;Hello world&lt;/doc&gt;";
+    const char *text = "<doc>Hello world</doc>";
     dummy_handler_flags = 0;
     XML_SetStartElementHandler(parser, dummy_start_element);
     if (_XML_Parse_SINGLE_BYTES(parser, text, strlen(text),
@@ -261,8 +261,8 @@ Character Data Accumulation
 START_TEST(test_french_utf8)
 {
     const char *text =
-        "&lt;?xml version='1.0' encoding='utf-8'?&gt;\n"
-        "&lt;doc&gt;\xC3\xA9&lt;/doc&gt;";
+        "<?xml version='1.0' encoding='utf-8'?>\n"
+        "<doc>\xC3\xA9</doc>";
 #ifdef XML_UNICODE
     const XML_Char *expected = XCS("\x00e9");
 #else
@@ -280,7 +280,7 @@ END_TEST
    to the start handler is not guaranteed.
 START_TEST(test_example)
 {
-    const char *text = "&lt;doc foo='bar'&gt;Hi&lt;/doc&gt;";
+    const char *text = "<doc foo='bar'>Hi</doc>";
     const XML_Char *expected = XCS("bar");
     run_attribute_check(text, expected);
 }

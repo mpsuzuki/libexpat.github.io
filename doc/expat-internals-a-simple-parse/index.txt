@@ -39,14 +39,14 @@
 The Setup
 
    We will work with the following few lines of XML:
-&lt;doc&gt;
-  &lt;element&gt;One&lt;/element&gt;
-&lt;/doc&gt;
+<doc>
+  <element>One</element>
+</doc>
 
    If you want to follow along, save that into a file (say
    ~/test/simple.xml), compile the outline example program and run it.
 $ make examples/outline
-$ examples/outline &lt; ~/test/simple.xml
+$ examples/outline < ~/test/simple.xml
 doc
   element
 
@@ -60,12 +60,12 @@ Initial Parsing State
 enum XML_Status XMLCALL
 XML_Parse(XML_Parser parser, const char *s, int len, int isFinal)
 {
-  if ((parser == NULL) || (len &lt; 0) || ((s == NULL) &amp;&amp; (len != 0))) {
+  if ((parser == NULL) || (len < 0) || ((s == NULL) && (len != 0))) {
     if (parser != NULL)
-      parser-&gt;m_errorCode = XML_ERROR_INVALID_ARGUMENT;
+      parser->m_errorCode = XML_ERROR_INVALID_ARGUMENT;
     return XML_STATUS_ERROR;
   }
-  switch (parser-&gt;m_parsingStatus.parsing) {
+  switch (parser->m_parsingStatus.parsing) {
   ...
 
    XML_Parse() is called by users, who are notoriously lackadaisical and
@@ -208,15 +208,15 @@ Scanning for the encoding
    functions I warned you about. This tokenizer is tuned to recognise
    things that should appear at the very start of a piece of XML. It
    starts off much like every other tokenizer.
-if (ptr &gt;= end)
+if (ptr >= end)
   return XML_TOK_NONE
 
    First it checks if there is anything to parse, i.e. that the start of
    the input ptr hasn't reached the end of the input at end.
-if (MINBPC(enc) &gt; 1) {
+if (MINBPC(enc) > 1) {
   size_t n = end - ptr;
-  if (n &amp; (MINBPC(enc) - 1)) {
-    n &amp;= ~(MINBPC(enc) - 1);
+  if (n & (MINBPC(enc) - 1)) {
+    n &= ~(MINBPC(enc) - 1);
     if (n == 0)
       return XML_TOK_PARTIAL;
     end = ptr + n;
@@ -252,7 +252,7 @@ switch (BYTE_TYPE(enc, ptr) {
    you actually have is:
 #define BYTE_TYPE(enc, p) SB_BYTE_TYPE(enc, p)
 #define SB_BYTE_TYPE(enc, p) \
-  (((struct normal_encoding *)(enc))-&gt;type[(unsigned char)*(p)])
+  (((struct normal_encoding *)(enc))->type[(unsigned char)*(p)])
 
    In other words, we look up the character in the type array of the
    encoding. That constant array is constructed in xmltok.c using include
@@ -273,7 +273,7 @@ case BT_LT:
    there is, so we don't have to deal with that unexpected hidden return
    statement, but bear it in mind for the future: some of the
    "convenience" macros in this file can and will exit your function!
-&lt;doc&gt;
+<doc>
  ^
  +-- ptr
 
@@ -299,7 +299,7 @@ case BT_HEX:
 
 Processing the Token
 
-&lt;doc&gt;
+<doc>
 ^
 +-- s, next
 
@@ -311,7 +311,7 @@ for (;;) {
   XML_Bool handleDefault = XML_TRUE;
   *eventPP = s;
   *eventEndPP = next;
-  if (tok &lt;= 0) {
+  if (tok <= 0) {
     /* ... */
 
    The function starts by doing some housekeeping with event pointers,
@@ -328,7 +328,7 @@ for (;;) {
    -XML_TOK_LITERAL and leave the processor function to decide whether or
    not that is good enough. In our case we have XML_TOK_INSTANCE_START,
    which is positive and skips all of that decision logic.
-role = XmlTokenRole(&amp;parser-&gt;m_prologState, tok, s, next, enc);
+role = XmlTokenRole(&parser->m_prologState, tok, s, next, enc);
 switch (role) {
 
    Instead, doProlog() calls XmlTokenRole() to find out what role the
@@ -349,7 +349,7 @@ prolog0(PROLOG_STATE *state,
   switch (tok) {
   /* ... */
   case XML_TOK_INSTANCE_START:
-    state-&gt;handler = error;
+    state->handler = error;
     return XML_ROLE_INSTANCE_START;
 
    prolog0 turns our token into XML_ROLE_INSTANCE_START and transitions to
@@ -364,7 +364,7 @@ prolog0(PROLOG_STATE *state,
    an external DTD. We didn't do that, so it skips down:
 case XML_ROLE_INSTANCE_START:
   /* useForeignDTD stuff... */
-  parser-&gt;m_processor = contentProcessor;
+  parser->m_processor = contentProcessor;
   return contentProcessor(parser, s, end, nextPtr);
 
    Setting m_processor field of the parser structure to contentProcessor
@@ -378,7 +378,7 @@ Parsing the Content
 
 for (;;) {
   const char *next = s;
-  int tok = XmlContentTok(enc, s, end, &amp;next);
+  int tok = XmlContentTok(enc, s, end, &next);
   *eventEndPP = next;
   switch (tok) {
 
@@ -394,9 +394,9 @@ PREFIX(contentTok)(const ENCODING *enc, const char *ptr,
                    const char *end,
                    const char **nextTokPtr)
 {
-  if (ptr &gt;= end)
+  if (ptr >= end)
     return XML_TOK_NONE;
-  if (MINBPC(enc) &gt; 1) {
+  if (MINBPC(enc) > 1) {
     /* ... */
   }
   switch (BYTE_TYPE(enc, ptr)) {
@@ -422,7 +422,7 @@ PREFIX(scanLt)(const ENCODING *enc, const char *ptr, const char *end,
 
    The first thing normal_scanLt() does is to ensure that there is a
    character there for it to check, using REQUIRE_CHAR.
-&lt;doc&gt;
+<doc>
  ^
  +-- ptr
 
@@ -453,7 +453,7 @@ case BT_HEX:
   break;
 
 case BT_LEAD2:
-  if (end - ptr &lt; 2)
+  if (end - ptr < 2)
     return XML_TOK_PARTIAL_CHAR;
   if (!IS_NMSTRT_CHAR(enc, ptr, 2)) {
     *nextTokPtr = ptr;
@@ -463,7 +463,7 @@ case BT_LEAD2:
   break;
 
 case BT_LEAD3:
-  if (end - ptr &lt; 3)
+  if (end - ptr < 3)
     return XML_TOK_PARTIAL_CHAR;
   if (!IS_NMSTRT_CHAR(enc, ptr, 3)) {
     *nextTokPtr = ptr;
@@ -473,7 +473,7 @@ case BT_LEAD3:
   break;
 
 case BT_LEAD4:
-  if (end - ptr &lt; 4)
+  if (end - ptr < 4)
     return XML_TOK_PARTIAL_CHAR;
   if (!IS_NMSTRT_CHAR(enc, ptr, 4)) {
     *nextTokPtr = ptr;
@@ -533,7 +533,7 @@ Back to the Parser
    So we were parsing the first character of our XML element, "d", which
    has a byte type of BT_HEX. The CHECK_NMSTRT_CASES macro accepts that
    byte type as described above, and moves the parse pointer on:
-&lt;doc&gt;
+<doc>
   ^
   +-- ptr
 
@@ -551,12 +551,12 @@ while (HAS_CHAR(enc, ptr, end)) {
    before it's swept up by CHECK_NAME_CASES, a macro very much like
    CHECK_NMSTRT_CASES except allowing a few more byte types through. It
    accepts the character and moves the parse pointer on.
-&lt;doc&gt;
+<doc>
    ^
    +-- ptr
 
    The same thing happens for the "c", except that it's a BT_HEX again.
-&lt;doc&gt;
+<doc>
     ^
     +-- ptr
 
@@ -576,7 +576,7 @@ gt:
 
 We Have An Element, Now What?
 
-&lt;doc&gt;
+<doc>
 ^    ^
 |    +-- next
 +-- ptr
@@ -592,20 +592,20 @@ case XML_TOK_START_TAG_WITH_ATTS:
     TAG *tag;
     enum XML_Error result;
     XML_Char *toPtr;
-    if (parser-&gt;m_freeTagList) {
-      tag = parser-&gt;m_freeTagList;
-      parser-&gt;m_freeTagList = parser-&gt;m_freeTagList-&gt;parent;
+    if (parser->m_freeTagList) {
+      tag = parser->m_freeTagList;
+      parser->m_freeTagList = parser->m_freeTagList->parent;
     }
     else {
       tag = (TAG *)MALLOC(parser, sizeof(TAG));
       if (!tag)
         return XML_ERROR_NO_MEMORY;
-      tag-&gt;buf = (char *)MALLOC(parser, INIT_TAG_BUF_SIZE);
-      if (!tag-&gt;buf) {
+      tag->buf = (char *)MALLOC(parser, INIT_TAG_BUF_SIZE);
+      if (!tag->buf) {
         FREE(tag);
         return XML_ERROR_NO_MEMORY;
       }
-      tag-&gt;bufEnd = tag-&gt;buf + INIT_TAG_BUF_SIZE;
+      tag->bufEnd = tag->buf + INIT_TAG_BUF_SIZE;
     }
 
    We want to allocate a TAG structure to hold information about our
@@ -656,7 +656,7 @@ utf8_toUtf8(const ENCODING *UNUSED_P(enc),
   /* Avoid copying partial characters (due to limited space). */
   const ptrdiff_t bytesAvailable = fromLim - *fromP;
   const ptrdiff_t bytesStorable = toLim - *toP;
-  if (bytesAvailable &gt; bytsStorable) {
+  if (bytesAvailable > bytsStorable) {
     fromLim = *fromP + bytesStorable;
     output_exhausted = true;
   }
@@ -664,8 +664,8 @@ utf8_toUtf8(const ENCODING *UNUSED_P(enc),
   /* Avoid copying partial characters (from incomplete input). */
   {
     const char * const fromLimBefore = fromLim;
-    _INTERNAL_trim_to_complete_utf8_characters(*fromP, &amp;fromLim);
-    if (fromLim &lt; fromLimBefore) {
+    _INTERNAL_trim_to_complete_utf8_characters(*fromP, &fromLim);
+    if (fromLim < fromLimBefore) {
       input_incomplete = true;
     }
   }
@@ -711,20 +711,20 @@ Strings and Tables
    parser workings get introduced here, in particular the hash tables and
    string pools.
 /* lookup the element type name */
-elementType = (ELEMENT_TYPE *)lookup(parser, &amp;dtd-&gt;elementTypes, tagNameP
-tr-&gt;str,0);
+elementType = (ELEMENT_TYPE *)lookup(parser, &dtd->elementTypes, tagNamePtr->str
+,0);
 if (!elementType) {
-  const XML_Char *name = poolCopyString(&amp;dtd-&gt;pool, tagNamePtr-&gt;str);
+  const XML_Char *name = poolCopyString(&dtd->pool, tagNamePtr->str);
   if (!name)
     return XML_ERROR_NO_MEMORY;
-  elementType = (ELEMENT_TYPE *)lookup(parser, &amp;dtd-&gt;elementTypes, name,
+  elementType = (ELEMENT_TYPE *)lookup(parser, &dtd->elementTypes, name,
                                        sizeof(ELEMENT_TYPE));
   if (!elementType)
     return XML_ERROR_NO_MEMORY;
-  if (parser-&gt;m_ns &amp;&amp; !setElementTypePrefix(parser, elementType))
+  if (parser->m_ns && !setElementTypePrefix(parser, elementType))
     return XML_ERROR_NO_MEMORY;
 }
-nDefaultAtts = elementType-&gt;nDefaultAtts;
+nDefaultAtts = elementType->nDefaultAtts;
 
    The parser keeps a number of hash tables for various different
    purposes. The one we are concerned with here is the elementTypes table
@@ -759,7 +759,7 @@ nDefaultAtts = elementType-&gt;nDefaultAtts;
    DO NOT FIDDLE WITH THIS, it is important to the way the hash tables
    work.
 /* get the attributes from the tokenizer */
-n = XmlGetAttributes(enc, attStr, parser-&gt;m_attsSize, parser-&gt;m_atts);
+n = XmlGetAttributes(enc, attStr, parser->m_attsSize, parser->m_atts);
 
    The actual parsing of the attributes is done by XmlGetAttribute(),
    which by now you should have recognised as being really a function
@@ -773,12 +773,12 @@ n = XmlGetAttributes(enc, attStr, parser-&gt;m_attsSize, parser-&gt;m_atts);
 
 Back to the Parse (Again)
 
-if (parser-&gt;m_startElementHandler)
-  parser-&gt;m_startElementHandler(parser-&gt;m_handlerArg, tag-&gt;name.str,
-                                (const XML_Char **)parser-&gt;m_atts);
-else if (parser-&gt;m_defaultHandler)
+if (parser->m_startElementHandler)
+  parser->m_startElementHandler(parser->m_handlerArg, tag->name.str,
+                                (const XML_Char **)parser->m_atts);
+else if (parser->m_defaultHandler)
   reportDefault(parser, enc, s, next);
-poolClear(&amp;parser-&gt;m_tempPool);
+poolClear(&parser->m_tempPool);
 break;
 
    Back in doContent(), there is little more to do for this start element
@@ -789,10 +789,10 @@ break;
    switch statement. We run through the parsing state dance again, doing
    nothing since we are still XML_PARSING, and then go back to the top of
    the loop and call normal_contentTok() again.
-&lt;doc&gt;
+<doc>
      ^
      +-- ptr
-  &lt;element&gt;One&lt;/element&gt;
+  <element>One</element>
 
    This time we examine the newline after the <doc> tag, which has a byte
    type of BT_LF.
@@ -803,11 +803,11 @@ case BT_LF:
    normal_contentTok() accepts this and sets the next token pointer to the
    space at the start of the next line.
 case XML_TOK_DATA_NEWLINE:
-  if (parser-&gt;m_characterDataHandler) {
+  if (parser->m_characterDataHandler) {
     XML_Char c = 0xA;
-    parser-&gt;m_characterDataHandler(parser-&gt;m_handlerArg, &amp;c, 1);
+    parser->m_characterDataHandler(parser->m_handlerArg, &c, 1);
   }
-  else if (parser-&gt;m_defaultHandler)
+  else if (parser->m_defaultHandler)
     reportDefault(parser, enc, s, next);
   break;
 
@@ -816,7 +816,7 @@ case XML_TOK_DATA_NEWLINE:
    character data handler the user may have registered. Another trip
    around the parsing state dance and we come back to calling
    normal_contentTok() again.
-  &lt;element&gt;One&lt;/element&gt;
+  <element>One</element>
 ^
 +-- ptr
 
@@ -828,17 +828,16 @@ case XML_TOK_DATA_NEWLINE:
    to point to it and returns XML_TOK_DATA_CHARS.
 case XML_TOK_DATA_CHARS:
   {
-    XML_CharacterDataHandler charDataHandler = parser-&gt;m_characterDataHandler
-;
+    XML_CharacterDataHandler charDataHandler = parser->m_characterDataHandler;
     if (charDataHandler) {
       if (MUST_CONVERT(enc, s)) {
         for (;;) {
-          ICHAR *dataPtr = (ICHAR *)parser-&gt;m_dataBuf;
-          const enum XML_Convert_Result convert_res = XmlConvert(enc, &amp;s, ne
-xt, &amp;dataPtr, (ICHAR *)parser-&gt;m_dataBufEnd);
+          ICHAR *dataPtr = (ICHAR *)parser->m_dataBuf;
+          const enum XML_Convert_Result convert_res = XmlConvert(enc, &s, next,
+&dataPtr, (ICHAR *)parser->m_dataBufEnd);
           *eventEndPP = s;
-          charDataHandler(parser-&gt;m_handlerArg, parser-&gt;m_dataBuf,
-                          (int)(dataPtr - (ICHAR *)parser-&gt;m_dataBuf));
+          charDataHandler(parser->m_handlerArg, parser->m_dataBuf,
+                          (int)(dataPtr - (ICHAR *)parser->m_dataBuf));
           if ((convert_res == XML_CONVERT_COMPLETED) || (convert_res == XML_CONV
 ERT_INPUT_INCOMPLETE))
             break;
@@ -846,11 +845,11 @@ ERT_INPUT_INCOMPLETE))
         }
       }
       else
-        charDataHandler(parser-&gt;m_handlerArg,
+        charDataHandler(parser->m_handlerArg,
                         (XML_Char *)s,
                         (int)((XML_Char *)next - (XML_Char *)s));
     }
-    else if (parser-&gt;m_defaultHandler)
+    else if (parser->m_defaultHandler)
       reportDefault(parser, enc, s, next);
   }
   break;
@@ -866,14 +865,14 @@ ERT_INPUT_INCOMPLETE))
    handler's job to hold whatever state it needs between invocations.
 
    Then we check the parsing state and loop around again.
-  &lt;element&gt;One&lt;/element&gt;
+  <element>One</element>
   ^
   +-- ptr
 
    We've already seen how the parser accepts a simple start element tag,
    so we don't need to go through that again. A few more turns around the
    loop and we have:
-  &lt;element&gt;One&lt;/element&gt;
+  <element>One</element>
            ^
            +-- ptr
 
@@ -890,7 +889,7 @@ ERT_INPUT_INCOMPLETE))
 
 End Tags
 
-  &lt;element&gt;One&lt;/element&gt;
+  <element>One</element>
               ^
               +-- ptr
 
@@ -920,7 +919,7 @@ PREFIX(scanEndTag)(const ENCODING *enc, const char *ptr,
       return XML_TOK_END_TAG;
 
    The start-of-parse pointer ptr has been moved on:
-  &lt;element&gt;One&lt;/element&gt;
+  <element>One</element>
                 ^
                 +-- ptr
 
@@ -931,40 +930,40 @@ PREFIX(scanEndTag)(const ENCODING *enc, const char *ptr,
    ">". It sets the "next token" pointer to the newline after the ">" and
    returns XML_TOK_END_TAG all the way back to doContent().
 case XML_TOK_END_TAG:
-  if (parser-&gt;m_tagLevel == startTagLevel)
+  if (parser->m_tagLevel == startTagLevel)
     return XML_ERROR_ASYNC_ENTITY;
 
    The first thing doContent() does with an XML_TOK_END_TAG is to check
    that it hasn't closed more tags than it opened. This could happen, for
    example if an overly-optimistic general entity expanded to an end tag.
    The XML document
-&lt;?xml version="1.0"?&gt;
-&lt;!DOCTYPE foodoc [
-  &lt;!ENTITY foo "&lt;b&gt;text&lt;/b&gt;&lt;/a&gt;"&gt;
-]&gt;
-&lt;a&gt;&amp;foo;
+<?xml version="1.0"?>
+<!DOCTYPE foodoc [
+  <!ENTITY foo "<b>text</b></a>">
+]>
+<a>&foo;
 
    trips exactly this test, while
-&lt;?xml version="1.0"?&gt;
-&lt;!DOCTYPE foodoc [
-  &lt;!ENTITY foo "&lt;b&gt;text&lt;/b&gt;"&gt;
-]&gt;
-&lt;a&gt;&amp;foo;&lt;/a&gt;
+<?xml version="1.0"?>
+<!DOCTYPE foodoc [
+  <!ENTITY foo "<b>text</b>">
+]>
+<a>&foo;</a>
 
    is just fine. In any case we don't have that problem; we have opened
    two tags and are closing one for the first time.
-TAG *tag = parser-&gt;m_tagStack;
-parser-&gt;m_tagStack = tag-&gt;parent;
-tag-&gt;parent = parser-&gt;m_freeTagList;
-parser-&gt;m_freeTagList = tag;
-rawName = s + enc-&gt;minBytesPerChar*2;
+TAG *tag = parser->m_tagStack;
+parser->m_tagStack = tag->parent;
+tag->parent = parser->m_freeTagList;
+parser->m_freeTagList = tag;
+rawName = s + enc->minBytesPerChar*2;
 len = XmlNameLength(enc, rawName);
-if (len != tag-&gt;rawNameLength
-    || memcmp(tag-&gt;rawName, rawName, len) != 0) {
+if (len != tag->rawNameLength
+    || memcmp(tag->rawName, rawName, len) != 0) {
   *eventPP = rawName;
   return XML_ERROR_TAG_MISMATCH;
 }
---parser-&gt;m_tagLevel;
+--parser->m_tagLevel;
 
    Confident that we are least starting off on the right foot, the parser
    pops the last tag structure off its list and compares its name to the
@@ -979,14 +978,14 @@ if (len != tag-&gt;rawNameLength
    handler the user may have registered and tidies up. That is
    straightforward in our case; we have no namespace bindings confusing
    the issue, and we aren't the root tag.
-  &lt;element&gt;One&lt;/element&gt;
+  <element>One</element>
                         ^
                         +-- ptr
-&lt;/doc&gt;
+</doc>
 
    Next we have the newline, which again is just passed to the character
    data handler.
-&lt;/doc&gt;
+</doc>
 ^
 +-- ptr
 
@@ -1002,12 +1001,12 @@ epilogProcessor(XML_Parser parser,
                 const char *end,
                 const char **nextPtr)
 {
-  parser-&gt;m_processor = epilogProcessor;
-  parser-&gt;m_eventPtr = s;
+  parser->m_processor = epilogProcessor;
+  parser->m_eventPtr = s;
   for (;;) {
     const char *next = NULL;
-    int tok = XmlPrologTok(parser-&gt;m_encoding, s, end, &amp;next);
-    parser-&gt;m_eventEndPtr = next;
+    int tok = XmlPrologTok(parser->m_encoding, s, end, &next);
+    parser->m_eventEndPtr = next;
     switch (tok) {
 
    epilogProcessor() is the last processor that will be invoked in a

@@ -123,11 +123,11 @@ struct encoding {
 
    Similarly, the predefinedEntityName field supplies a function to check
    the input bytestream against the short list of predefined XML entities:
-   &lt;, &gt;, &amp;, &quot; and &apos;. This function expects to be
-   passed a start pointer pointing to the character after the ampersand
-   and an end pointer pointing to the semicolon. It returns the codepoint
-   of the character identified, or zero if the name passed in is not one
-   of the predefined entities.
+   <, >, &, " and '. This function expects to be passed a start pointer
+   pointing to the character after the ampersand and an end pointer
+   pointing to the semicolon. It returns the codepoint of the character
+   identified, or zero if the name passed in is not one of the predefined
+   entities.
   void (PTRCALL *updatePosition)(const ENCODING *,
                                  const char *ptr,
                                  const char *end,

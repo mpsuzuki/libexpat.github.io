@@ -149,56 +149,56 @@ risc_os_encoding_handler(void *data,
 
    Since this encoding is exactly the same as ASCII for the first 128
    values, we can set the first half of the map easily:
-for (i = 0; i &lt; 128; i++)
-    info-&gt;map[i] = i;
+for (i = 0; i < 128; i++)
+    info->map[i] = i;
 
    A lot of encodings look like this. The next part of the map cannot be
    done so algorithmically. In practise this is probably best done as a
    constant array that we can memcpy into place, but we'll do it the hard
    way here.
-info-&gt;map[0x80] = 0x20AC;   /* EUR */
-info-&gt;map[0x81] = 0x0174;   /* W */
-info-&gt;map[0x82] = 0x0175;   /* w */
-info-&gt;map[0x83] = -1;       /* Resize icon, invalid */
-info-&gt;map[0x84] = -1;       /* Close icon, invalid */
-info-&gt;map[0x85] = 0x0176;   /* Y */
-info-&gt;map[0x86] = 0x0177;   /* y */
-info-&gt;map[0x87] = -1;       /* "87" */
-info-&gt;map[0x88] = -1;       /* Left arrow icon, invalid */
-info-&gt;map[0x89] = -1;       /* Right arrow icon, invalid */
-info-&gt;map[0x8A] = -1;       /* Up arrow icon, invalid */
-info-&gt;map[0x8B] = -1;       /* Down arrow icon, invalid */
-info-&gt;map[0x8C] = 0x2026;   /* ¡Ä */
-info-&gt;map[0x8D] = 0x2122;   /* (TM) */
-info-&gt;map[0x8E] = 0x2030;   /* ¢ó */
-info-&gt;map[0x8F] = 0x2022;   /* o (Bullet) */
-info-&gt;map[0x90] = 0x2018;   /* ` */
-info-&gt;map[0x91] = 0x2019;   /* ' */
-info-&gt;map[0x92] = 0x2039;   /* < */
-info-&gt;map[0x93] = 0x203A;   /* > */
-info-&gt;map[0x94] = 0x201C;   /* " */
-info-&gt;map[0x95] = 0x201D;   /* " */
-info-&gt;map[0x96] = 0x201E;   /* " */
-info-&gt;map[0x97] = 0x2013;   /* - (n-dash) */
-info-&gt;map[0x98] = 0x2014;   /* -- (m-dash) */
-info-&gt;map[0x99] = 0x2212;   /* ¡Ý (minus) */
-info-&gt;map[0x9A] = 0x0152;   /* OE */
-info-&gt;map[0x9B] = 0x0153;   /* oe */
-info-&gt;map[0x9C] = 0x2020;   /* ¢÷ */
-info-&gt;map[0x9D] = 0x2021;   /* ¢ø */
-info-&gt;map[0x9E] = 0xFB01;   /* fi */
-info-&gt;map[0x9F] = 0xFB02;   /* fl */
+info->map[0x80] = 0x20AC;   /* EUR */
+info->map[0x81] = 0x0174;   /* W */
+info->map[0x82] = 0x0175;   /* w */
+info->map[0x83] = -1;       /* Resize icon, invalid */
+info->map[0x84] = -1;       /* Close icon, invalid */
+info->map[0x85] = 0x0176;   /* Y */
+info->map[0x86] = 0x0177;   /* y */
+info->map[0x87] = -1;       /* "87" */
+info->map[0x88] = -1;       /* Left arrow icon, invalid */
+info->map[0x89] = -1;       /* Right arrow icon, invalid */
+info->map[0x8A] = -1;       /* Up arrow icon, invalid */
+info->map[0x8B] = -1;       /* Down arrow icon, invalid */
+info->map[0x8C] = 0x2026;   /* ¡Ä */
+info->map[0x8D] = 0x2122;   /* (TM) */
+info->map[0x8E] = 0x2030;   /* ¢ó */
+info->map[0x8F] = 0x2022;   /* o (Bullet) */
+info->map[0x90] = 0x2018;   /* ` */
+info->map[0x91] = 0x2019;   /* ' */
+info->map[0x92] = 0x2039;   /* < */
+info->map[0x93] = 0x203A;   /* > */
+info->map[0x94] = 0x201C;   /* " */
+info->map[0x95] = 0x201D;   /* " */
+info->map[0x96] = 0x201E;   /* " */
+info->map[0x97] = 0x2013;   /* - (n-dash) */
+info->map[0x98] = 0x2014;   /* -- (m-dash) */
+info->map[0x99] = 0x2212;   /* ¡Ý (minus) */
+info->map[0x9A] = 0x0152;   /* OE */
+info->map[0x9B] = 0x0153;   /* oe */
+info->map[0x9C] = 0x2020;   /* ¢÷ */
+info->map[0x9D] = 0x2021;   /* ¢ø */
+info->map[0x9E] = 0xFB01;   /* fi */
+info->map[0x9F] = 0xFB02;   /* fl */
 
    As it happens, the rest of the encoding is the same as Latin-1, so in
    the interests of brevity we will take the obvious short-cut:
-for (i = 160; i &lt; 256; i++)
-    info-&gt;map[i] = i;
+for (i = 160; i < 256; i++)
+    info->map[i] = i;
 
    Finally, we don't have a convert function, so we don't need user data
    and we don't need a release function either:
-    info-&gt;data = NULL;
-    info-&gt;convert = NULL;
-    info-&gt;release = NULL;
+    info->data = NULL;
+    info->convert = NULL;
+    info->release = NULL;
     return XML_STATUS_OK;
 }
 
@@ -295,13 +295,13 @@ convert_jis(void *data, const char *s)
      * all that is in the map.  s[0] must either lie in the range
      * 0x81 to 0x9F or 0xE0 to 0xEF, according to the map.
      */
-    if (s[0] &lt;= 0x9F) {
+    if (s[0] <= 0x9F) {
         table = second_byte_lo[s[0] - 0x81];
     } else {
         table = second_byte_hi[s[0] - 0xE0];
     }
     /* There are no legal two-byte sequences with s[1] &lt; 0x40 */
-    if (s[1] &lt; 0x40)
+    if (s[1] < 0x40)
         return -1;
     return table[s[1] - 0x40];
 }
@@ -319,15 +319,15 @@ shift_jis_encoding_handler(void *data,
 
     if (strcmp(encoding, "shift-jis"))
         return XML_STATUS_ERROR;
-    for (i = 0; i &lt; 128; i++)
-        info-&gt;map[i] = i;
-    info-&gt;map[92] = 0x00A5; /* Replace Backslash with Yen */
-    info-&gt;map[126] = 0x203E; /* Replace Tilde with Overline */
+    for (i = 0; i < 128; i++)
+        info->map[i] = i;
+    info->map[92] = 0x00A5; /* Replace Backslash with Yen */
+    info->map[126] = 0x203E; /* Replace Tilde with Overline */
     /* Copy in the table for the upper half of map */
-    memcpy(&amp;info-&gt;map[128], first_byte_hi, 128*sizeof(int));
-    info-&gt;data = NULL;
-    info-&gt;convert = convert_jis;
-    info-&gt;release = NULL;
+    memcpy(&info->map[128], first_byte_hi, 128*sizeof(int));
+    info->data = NULL;
+    info->convert = convert_jis;
+    info->release = NULL;
     return XML_STATUS_OK;
 }
 
@@ -408,8 +408,8 @@ page_encoding_handler(void *data,
     page_data = XML_MemMalloc(parser, sizeof(PageEncodingData));
     if (page_data == NULL)
         return XML_STATUS_ERROR;
-    page_data-&gt;parser = parser;
-    page_data-&gt;page = 0;
+    page_data->parser = parser;
+    page_data->page = 0;
 
    The reason I wanted the parser structure is so that we can allocate
    memory using XML_MemMalloc(). This will use the same allocation
@@ -422,13 +422,13 @@ page_encoding_handler(void *data,
    recognise this encoding name", and that is how it will be reported to
    the user. This time we would like to report that we are out of memory,
    but unfortunately there is no other way of reporting an error.
-    for (i = 0; i &lt; 128; i++)
-        info-&gt;map[i] = i;
-    info-&gt;map[0x80] = -3;
-    info-&gt;map[0x81] = -2;
-    info-&gt;map[0x82] = -2;
-    for (i = 0x83; i &lt; 256; i++)
-        info-&gt;map[i] = -1;
+    for (i = 0; i < 128; i++)
+        info->map[i] = i;
+    info->map[0x80] = -3;
+    info->map[0x81] = -2;
+    info->map[0x82] = -2;
+    for (i = 0x83; i < 256; i++)
+        info->map[i] = -1;
 
    Setting up the map is pretty simple; we have ASCII, one three-byte
    sequence, two two-byte sequences, and everything else is invalid. In
@@ -437,9 +437,9 @@ page_encoding_handler(void *data,
    our unknown encoding handler is called, so we never need to explicitly
    set invalid entries. Doing so makes what is going on a good deal
    clearer, however, and the processing cost is negligible.
-    info-&gt;data = page_data;
-    info-&gt;convert = page_convert;
-    info-&gt;release = page_release;
+    info->data = page_data;
+    info->convert = page_convert;
+    info->release = page_release;
     return XML_STATUS_OK;
 }
 
@@ -454,7 +454,7 @@ static void XMLCALL
 page_release(void *data)
 {
     PageEncodingData *page_data = (PageEncodingData *)data;
-    XML_MemFree(page_data-&gt;parser, data);
+    XML_MemFree(page_data->parser, data);
 }
 
    All very straightforward. So, surprisingly, is the convert function:
@@ -466,16 +466,16 @@ page_convert(void *data, const char *s)
     switch (s[0]) {
     case 0x80:
         /* This is a three byte sequence: (0x80, page, offset) */
-        page_data-&gt;page = (s[1] &amp; 0xff) &lt;&lt; 8;
-        return page_data-&gt;page | (s[2] &amp; 0xff);
+        page_data->page = (s[1] & 0xff) << 8;
+        return page_data->page | (s[2] & 0xff);
 
     case 0x81:
         /* This is a two byte sequence: (0x81, offset) */
-        return page_data-&gt;page | (s[1] &amp; 0xff);
+        return page_data->page | (s[1] & 0xff);
 
     case 0x82:
         /* This is a two bytes sequence: (0x82, value) */
-        return s[1] &amp; 0xff;
+        return s[1] & 0xff;
 
     default:
         /* This should never happen */
